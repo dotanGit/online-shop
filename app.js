@@ -7,6 +7,8 @@ const env = process.env.NODE_ENV || 'local';
 require('custom-env').env(env, './config');
 
 var app = express();
+
+app.use(express.static('public'))
 app.use(cors());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.json());

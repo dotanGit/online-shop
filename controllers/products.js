@@ -1,7 +1,7 @@
 const productService = require('../services/products')
 
 const addProduct = async (req,res) => {
-    const newProduct = await productService.addProduct(req.body.name,req.body.price);
+    const newProduct = await productService.addProduct(req.body.name,req.body.price,req.body.category);
     res.redirect('/products');
 };
 
@@ -24,7 +24,7 @@ const editProduct = async (req,res) => {
 
 const updateProduct = async(req,res) => {
     const id= req.params.id;
-    const updatedProduct = await productService.updateProduct(id, req.body.name, req.body.price);
+    const updatedProduct = await productService.updateProduct(id, req.body.name, req.body.price,req.body.category);
     res.redirect('/products');
 };
 

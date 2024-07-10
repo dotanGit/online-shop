@@ -11,7 +11,7 @@
     <ul>
         <% products.forEach(product => { %>
             <li>
-                <%= product.name %> - <%= product.price %>
+                <%= product.name %> | <%= product.price %> | <%= product.category %>
                 <a href="/products/<%= product._id %>/edit">Edit</a>
             </li>
         <% }) %>
@@ -19,6 +19,7 @@
     <form action="/products" method="post">
         <input type="text" name="name" placeholder="Product Name" required>
         <input type="text" name="price" placeholder="Product Price" required>
+        <input type="text" name="category" placeholder="Category" required>
         <button type="submit">Add Product</button>
     </form>
 </body>

@@ -17,6 +17,8 @@
         <input type="text" name="name" id="name" value="<%= product.name %>" required><br>
         <label for="price">New Price:</label>
         <input type="text" name="price" id="price" value="<%= product.price %>" required><br>
+        <label for="category">Category:</label>
+        <input type="text" name="category" id="category" value="<%= product.category %>" required><br>
         <button type="submit">Update Product</button>
     </form>
     <form action="/products/<%= product._id %>?_method=DELETE" method="post" style="display:inline;">

@@ -3,38 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dummy Online Shopping Store</title>
-    <link href="./products.css" rel="stylesheet">
+    <title>Products</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <a class="navbar-brand" href="#">Online Store</a>
-        <div>
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-            <a href="#">Cart</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="row">
-            <% for (i=0; i < products.length; i++) { %> 
-            <div class="col">
-                <div class="product">
-                    <img src="https://via.placeholder.com/150" alt="Product 1">
-                    <h5><%= products[i].title %></h5>
-                    <p><%= products[i].price %></p>
-                    <a href="/products/<%= products[i]._id %>">Show Product</a><br>
-                    <a href="/deleteProduct?id=<%= products[i].id %>">Delete Product</a>
-                </div>
-            </div>
-            <% } %>
-        </div>
-    </div>
-
-    <footer>
-        © 2024 Dummy Online Shopping Store
-    </footer>
+    <h1>Products</h1>
+    <ul>
+        <% products.forEach(product => { %>
+            <li>
+                <%= product.name %> - <%= product.price %>
+                <form action="/products/<%= product._id %>?_method=DELETE" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <form action="/products" method="post">
+        <input type="text" name="name" placeholder="Product Name" required>
+        <input type="text" name="price" placeholder="Product Price" required>
+        <button type="submit">Add Product</button>
+    </form>
 </body>
 </html>

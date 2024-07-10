@@ -18,8 +18,18 @@ const deleteProduct = async (id) => {
     return await Product.findByIdAndDelete(id);
 };
 
+const getProductById = async (id) => {
+    return await Product.findById(id);
+};
+
+const updateProduct = async (id,name,price) => {
+    return await Product.findByIdAndUpdate(id,{name,price},{new:true});
+}
+
 module.exports = {
     addProduct,
     getAllProducts,
-    deleteProduct
+    deleteProduct,
+    getProductById,
+    updateProduct
 };

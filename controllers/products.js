@@ -1,4 +1,5 @@
-const productService = require('../services/products')
+const productService = require('../services/products');
+const categoryService = require('../services/category');
 
 const addProduct = async (req,res) => {
     const newProduct = await productService.addProduct(req.body.name,req.body.price,req.body.category);
@@ -6,8 +7,14 @@ const addProduct = async (req,res) => {
 };
 
 const getProducts = async (req,res) => {
-    const products = await productService.getAllProducts();
-    res.render('products', { products });
+    let products;
+    const categories = await categoryService.getAllCategories();
+    if (req.query.category) {
+        products = await productService.getProductsByCategory(req.query.category);
+    } else {
+        products = await productService.getAllProducts();
+    }
+    res.render('products', { products, categories });
 };
 
 const deleteProduct = async (req,res) => {
@@ -17,14 +24,16 @@ const deleteProduct = async (req,res) => {
 };
 
 const editProduct = async (req,res) => {
-    const id= req.params.id;
+    const id = req.params.id;
     const product = await productService.getProductById(id);
-    res.render('editProduct', { product });
+    const categories = await categoryService.getAllCategories();
+    res.render('editProduct', { product, categories });
 };
 
 const updateProduct = async(req,res) => {
     const id= req.params.id;
-    const updatedProduct = await productService.updateProduct(id, req.body.name, req.body.price,req.body.category);
+    const { name, price, category } = req.body;
+    const updatedProduct = await productService.updateProduct(id, name,price,category);
     res.redirect('/products');
 };
 

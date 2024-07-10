@@ -5,7 +5,7 @@ const addCategory = async (name) => {
         name
     });
 
-    return await product.save();
+    return await category.save();
 };
 
 

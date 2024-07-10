@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 
 
 const products = require('./routes/products');
-
+const category = require('./routes/category');
 
 const env = process.env.NODE_ENV || 'local';
 require('custom-env').env(env, './config');
@@ -14,7 +14,8 @@ require('custom-env').env(env, './config');
 mongoose.connect(process.env.CONNECTION_STRING, 
     {   useNewUrlParser: true, 
         useUnifiedTopology: true, 
-        useFindAndModify: false 
+        useFindAndModify: false,
+        useCreateIndex: true
     });
 
 var app = express();
@@ -29,5 +30,6 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 
 app.use('/products', products);
+app.use('/categories', category);
 
 app.listen(process.env.PORT);

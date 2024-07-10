@@ -1,3 +1,4 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,52 @@
         <input type="text" name="name" placeholder="Product Name" required>
         <input type="text" name="price" placeholder="Product Price" required>
         <input type="text" name="category" placeholder="Category" required>
+        <button type="submit">Add Product</button>
+    </form>
+</body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Products</h1>
+    <form action="/products" method="get">
+        <label for="category">Filter by Category:</label>
+        <select name="category" id="category">
+            <option value="">All Categories</option>
+            <% categories.forEach(category => { %>
+                <option value="<%= category._id %>"><%= category.name %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Filter</button>
+        <a href="/categories" style="display: inline;">
+            <button type="button">Manage Categories</button>
+        </a>
+    </form>
+    <ul>
+        <% products.forEach(product => { %>
+            <li>
+                <%= product.name %> - <%= product.price %> - <%= product.category.name %> 
+                <a href="/products/<%= product._id %>/edit">Edit</a>
+            </li>
+        <% }) %>
+    </ul>
+    <form action="/products" method="post">
+        <input type="text" name="name" placeholder="Product Name" required>
+        <input type="text" name="price" placeholder="Product Price" required>
+        <label for="category">Category:</label>
+        <select name="category" id="category" required>
+            <% categories.forEach(category => { %>
+                <option value="<%= category._id %>"><%= category.name %></option>
+            <% }) %>
+        </select>
         <button type="submit">Add Product</button>
     </form>
 </body>

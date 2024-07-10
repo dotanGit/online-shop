@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Categories</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Edit Category</h1>
+    <div>
+        <p><strong>Category Name:</strong> <%= category.name %></p>
+    </div>
+    <form action="/categories/<%= category._id %>?_method=PUT" method="post">
+        <label for="name">New Name:</label>
+        <input type="text" name="name" id="name" value="<%= category.name %>" required><br>
+        <button type="submit">Update Product</button>
+    </form>
+    <form action="/categories/<%= category._id %>?_method=DELETE" method="post" style="display:inline;">
+        <button type="submit">Delete</button><br>
+    </form>
+    <a href="/categories">Back to Manage Categories</a>
+</body>
+</html>
+</body>
+</html>

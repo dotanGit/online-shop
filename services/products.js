@@ -12,7 +12,7 @@ const addProduct = async (name,price,category) => {
 
 
 const getAllProducts = async() => {
-    return await Product.find({});
+    return await Product.find({}).populate('category');
 };
 
 const deleteProduct = async (id) => {
@@ -20,17 +20,22 @@ const deleteProduct = async (id) => {
 };
 
 const getProductById = async (id) => {
-    return await Product.findById(id);
+    return await Product.findById(id).populate('category');
 };
 
 const updateProduct = async (id,name,price,category) => {
-    return await Product.findByIdAndUpdate(id,{name,price,category},{new:true});
+    return await Product.findByIdAndUpdate(id,{name,price,category},{new:true}).populate('category');
 }
+
+const getProductsByCategory = async (category) => {
+    return await Product.find({ category }).populate('catgeory');
+  };
 
 module.exports = {
     addProduct,
     getAllProducts,
     deleteProduct,
     getProductById,
-    updateProduct
+    updateProduct,
+    getProductsByCategory
 };

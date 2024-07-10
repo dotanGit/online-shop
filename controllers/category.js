@@ -1,13 +1,13 @@
 const categoryService = require('../services/category')
 
 const addCategory = async (req,res) => {
-    const newCategory = await categoryService.addCategory(req.body.name);
+    await categoryService.addCategory(req.body.name);
     res.redirect('/categories');
 };
 
 const getCategories = async (req,res) => {
-    const category = await categoryService.getAllCategories();
-    res.render('category', { categorys });
+    const categories = await categoryService.getAllCategories();
+    res.render('category', { categories });
 };
 
 const deleteCategory = async (req,res) => {
@@ -24,8 +24,8 @@ const editCategory = async (req,res) => {
 
 const updateCategory = async(req,res) => {
     const id= req.params.id;
-    const name = req.params.name;
-    const updatedCategory = await categoryService.updateCategory(id, name);
+    const name = req.body.name;
+    await categoryService.updateCategory(id, name);
     res.redirect('/categories');
 };
 

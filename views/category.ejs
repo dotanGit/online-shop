@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Categories</h1>
+    <ul>
+        <% categories.forEach(category => { %>
+            <li>
+                <%= category.name %>
+                <a href="/categories/<%= category._id %>/edit">Edit</a>
+            </li>
+        <% }) %>
+    </ul>
+    <form action="/categories" method="post">
+        <input type="text" name="name" placeholder="Category Name" required>
+        <button type="submit">Add Category</button>
+    </form>
+    <a href="/products">Back to Products</a>
+</body>
+</html>

@@ -2,19 +2,23 @@ const productService = require('../services/products');
 const categoryService = require('../services/category');
 
 const addProduct = async (req,res) => {
-    const newProduct = await productService.addProduct(req.body.name,req.body.price,req.body.category);
+    await productService.addProduct(req.body.name,req.body.price,req.body.category);
     res.redirect('/products');
 };
 
 const getProducts = async (req,res) => {
     let products;
     const categories = await categoryService.getAllCategories();
+    let selectedCategoryName = 'All Categories';
+
     if (req.query.category) {
+        const selectedCategory = await categoryService.getCategoryById(req.query.category);
+        selectedCategoryName = selectedCategory.name;
         products = await productService.getProductsByCategory(req.query.category);
     } else {
         products = await productService.getAllProducts();
     }
-    res.render('products', { products, categories });
+    res.render('products', { products, categories , selectedCategoryName});
 };
 
 const deleteProduct = async (req,res) => {

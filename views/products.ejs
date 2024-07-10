@@ -50,6 +50,9 @@
             <button type="button">Manage Categories</button>
         </a>
     </form>
+    <% if (selectedCategoryName !== 'All Categories') { %>
+        <h2>Category: <%= selectedCategoryName %></h2>
+    <% } %>
     <ul>
         <% products.forEach(product => { %>
             <li>

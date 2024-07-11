@@ -29,7 +29,9 @@
         <% products.forEach(product => { %>
             <li>
                 <%= product.name %> - <%= product.price %> - <%= product.category.name %> 
-                <a href="/products/<%= product._id %>/edit">Edit</a>
+                <button class="edit-product-btn" data-product-id="<%= product._id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>" data-product-category="<%= product.category._id %>">Edit</button>
+
+                <!-- <a href="/products/<%= product._id %>/edit">Edit</a> -->
             </li>
         <% }) %>
     </ul>
@@ -37,5 +39,6 @@
     <button id="add-product-btn">Add New Product</button>
 
     <script src="/js/addProduct.js"></script>
+    <script src="/js/editProduct.js"></script>
 </body>
 </html>

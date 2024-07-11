@@ -13,7 +13,6 @@
         <% categories.forEach(category => { %>
             <li>
                 <%= category.name %>
-                <!-- <a href="/categories/<%= category._id %>/edit">Edit</a> -->
                 <button class="edit-category-btn" data-category-id="<%= category._id %>" data-category-name="<%= category.name %>">Edit</button>
             </li>
         <% }) %>

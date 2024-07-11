@@ -27,24 +27,22 @@ const deleteProduct = async (req,res) => {
     res.redirect('/products');
 };
 
-const editProduct = async (req,res) => {
-    const id = req.params.id;
-    const product = await productService.getProductById(id);
-    const categories = await categoryService.getAllCategories();
-    res.render('editProduct', { product, categories });
-};
 
 const updateProduct = async(req,res) => {
-    const id= req.params.id;
-    const { name, price, category } = req.body;
-    const updatedProduct = await productService.updateProduct(id, name,price,category);
-    res.redirect('/products');
+    try
+    {
+        const id= req.params.id;
+        const { name, price, category } = req.body;
+        await productService.updateProduct(id, name,price,category);
+        res.status(200).json({ message: 'Product updated successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating product', error });
+    }
 };
 
 module.exports = {
     addProduct,
     getProducts,
     deleteProduct,
-    editProduct,
     updateProduct
 };

@@ -35,23 +35,17 @@ const deleteCategory = async (req,res) => {
     }
 };
 
-const editCategory = async (req,res) => {
-    const id= req.params.id;
-    const category = await categoryService.getCategoryById(id);
-    res.render('editCategory', { category });
-};
 
 const updateCategory = async(req,res) => {
     const id= req.params.id;
     const name = req.body.name;
     await categoryService.updateCategory(id, name);
-    res.redirect('/categories');
+    res.status(200).json({ message: 'Category updated successfully' });
 };
 
 module.exports = {
     addCategory,
     getCategories,
     deleteCategory,
-    editCategory,
     updateCategory
 };

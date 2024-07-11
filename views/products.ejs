@@ -33,17 +33,7 @@
             </li>
         <% }) %>
     </ul>
-    <form action="/products" method="post">
-        <input type="text" name="name" placeholder="Product Name" required>
-        <input type="text" name="price" placeholder="Product Price" required>
-        <label for="category">Category:</label>
-        <select name="category" id="category" required>
-            <% categories.forEach(category => { %>
-                <option value="<%= category._id %>"><%= category.name %></option>
-            <% }) %>
-        </select>
-        <!-- <button type="submit">Add Product</button> -->
-    </form>
+    
     <button id="add-product-btn">Add New Product</button>
 
     <script src="/js/addProduct.js"></script>

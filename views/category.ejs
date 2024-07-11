@@ -13,13 +13,15 @@
         <% categories.forEach(category => { %>
             <li>
                 <%= category.name %>
-                <a href="/categories/<%= category._id %>/edit">Edit</a>
+                <!-- <a href="/categories/<%= category._id %>/edit">Edit</a> -->
+                <button class="edit-category-btn" data-category-id="<%= category._id %>" data-category-name="<%= category.name %>">Edit</button>
             </li>
         <% }) %>
     </ul>
-    <button id="add-category-btn">Add Category</button><br>
+    <button id="add-category-btn">Add New Category</button><br>
     <a href="/products">Back to Products</a>
 
     <script src="/js/addCategory.js"></script>
+    <script src="/js/editCategory.js"></script>
 </body>
 </html>

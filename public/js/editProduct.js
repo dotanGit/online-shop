@@ -26,12 +26,18 @@ function editProduct(productId, productName, productPrice, productCategory) {
         Swal.fire({
             title: 'Edit Product',
             html: `
-                <label for="swal-input1">Name:</label>
-                <input id="swal-input1" class="swal2-input" placeholder="Product Name" value="${productName}">
-                <label for="swal-input2">Price:</label>
-                <input id="swal-input2" class="swal2-input" placeholder="Product Price" value="${productPrice}">
-                <label for="swal-input3">Category:</label>
-                <select id="swal-input3" class="swal2-input">${categoryOptions}</select>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <label for="swal-input1" style="width: 100px;">Name:</label>
+                    <input id="swal-input1" class="swal2-input" placeholder="Product Name" value="${productName}" style="width: calc(100% - 110px);">
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <label for="swal-input2" style="width: 100px;">Price:</label>
+                    <input id="swal-input2" class="swal2-input" placeholder="Product Price" value="${productPrice}" style="width: calc(100% - 110px);">
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <label for="swal-input3" style="width: 100px;">Category:</label>
+                    <select id="swal-input3" class="swal2-input" style="width: calc(100% - 110px);">${categoryOptions}</select>
+                </div>
             `,
             focusConfirm: false,
             showCancelButton: true,

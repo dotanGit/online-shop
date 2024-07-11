@@ -31,11 +31,16 @@ const getProductsByCategory = async (category) => {
     return await Product.find({ category }).populate('category');
   };
 
+const deleteProductsByCategory = async (categoryId) => {
+    return await Product.deleteMany({ category: categoryId });
+};
+
 module.exports = {
     addProduct,
     getAllProducts,
     deleteProduct,
     getProductById,
     updateProduct,
-    getProductsByCategory
+    getProductsByCategory,
+    deleteProductsByCategory
 };

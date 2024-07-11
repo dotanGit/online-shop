@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Categories</title>
     <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
     <h1>Edit Category</h1>
@@ -16,11 +17,8 @@
         <input type="text" name="name" id="name" value="<%= category.name %>" required><br>
         <button type="submit">Update Product</button>
     </form>
-    <form action="/categories/<%= category._id %>?_method=DELETE" method="post" style="display:inline;">
-        <button type="submit">Delete</button><br>
-    </form>
+    <button id="delete-category-btn" data-category-id="<%= category._id %>">Delete Category</button>
     <a href="/categories">Back to Manage Categories</a>
-</body>
-</html>
+    <script src="/js/deleteConfirmation.js"></script>
 </body>
 </html>

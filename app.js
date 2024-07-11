@@ -12,10 +12,9 @@ const env = process.env.NODE_ENV || 'local';
 require('custom-env').env(env, './config');
 
 mongoose.connect(process.env.CONNECTION_STRING, 
-    {   useNewUrlParser: true, 
+    {   
+        useNewUrlParser: true, 
         useUnifiedTopology: true, 
-        useFindAndModify: false,
-        useCreateIndex: true
     });
 
 var app = express();

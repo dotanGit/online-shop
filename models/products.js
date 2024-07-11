@@ -11,7 +11,7 @@ const Product = new Schema ({
         required : true
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'Category', // Reference to the Category model
         required: true
       }

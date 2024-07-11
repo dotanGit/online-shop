@@ -1,14 +1,14 @@
-document.querySelectorAll('.delete-category-btn').forEach(button => {
+document.querySelectorAll('.delete-product-btn').forEach(button => {
     button.addEventListener('click', function() {
-        const categoryId = this.getAttribute('data-category-id');
-        confirmDeleteCategory(categoryId);
+        const productId = this.getAttribute('data-product-id');
+        confirmDeleteProduct(productId);
     });
 });
 
-function confirmDeleteCategory(categoryId) {
+function confirmDeleteProduct(productId) {
     Swal.fire({
         title: 'Are you sure?',
-        text: "This will delete the category and all associated products!",
+        text: "The data will be lost!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -16,22 +16,22 @@ function confirmDeleteCategory(categoryId) {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`/categories/${categoryId}`, {
+            fetch(`/products/${productId}`, {
                 method: 'DELETE',
             })
             .then(response => {
                 if (response.ok) {
                     Swal.fire(
                         'Deleted!',
-                        'The category and associated products have been deleted.',
+                        'The product have been deleted.',
                         'success'
                     ).then(() => {
-                        window.location.href = '/categories';
+                        window.location.href = '/products';
                     });
                 } else {
                     Swal.fire(
                         'Error!',
-                        'There was an error deleting the category.',
+                        'There was an error deleting the product.',
                         'error'
                     );
                 }

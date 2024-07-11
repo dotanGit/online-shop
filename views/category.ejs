@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories</title>
-    <link rel="stylesheet" href="/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
@@ -14,6 +13,7 @@
             <li>
                 <%= category.name %>
                 <button class="edit-category-btn" data-category-id="<%= category._id %>" data-category-name="<%= category.name %>">Edit</button>
+                <button class="delete-category-btn" data-category-id="<%= category._id %>">Delete</button>
             </li>
         <% }) %>
     </ul>
@@ -22,5 +22,6 @@
 
     <script src="/js/addCategory.js"></script>
     <script src="/js/editCategory.js"></script>
+    <script src="/js/deleteCategoryConfirmation.js"></script>
 </body>
 </html>

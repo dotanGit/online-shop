@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
-    <link rel="stylesheet" href="/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
@@ -30,8 +29,7 @@
             <li>
                 <%= product.name %> - <%= product.price %> - <%= product.category.name %> 
                 <button class="edit-product-btn" data-product-id="<%= product._id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>" data-product-category="<%= product.category._id %>">Edit</button>
-
-                <!-- <a href="/products/<%= product._id %>/edit">Edit</a> -->
+                <button class="delete-product-btn" data-product-id="<%= product._id %>">Delete</button>
             </li>
         <% }) %>
     </ul>
@@ -40,5 +38,6 @@
 
     <script src="/js/addProduct.js"></script>
     <script src="/js/editProduct.js"></script>
+    <script src="/js/deleteProductConfirmation.js"></script>
 </body>
 </html>

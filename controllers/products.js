@@ -22,9 +22,13 @@ const getProducts = async (req,res) => {
 };
 
 const deleteProduct = async (req,res) => {
-    const id= req.params.id;
-    await productService.deleteProduct(id);
-    res.redirect('/products');
+    const id = req.params.id;
+    try { 
+        await productService.deleteProduct(id);
+        res.status(200).json({ message: 'Product deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting product', error });
+    }
 };
 
 

@@ -28,7 +28,7 @@ const updateProduct = async (id,name,price,category) => {
 }
 
 const getProductsByCategory = async (category) => {
-    return await Product.find({ category }).populate('catgeory');
+    return await Product.find({ category }).populate('category');
   };
 
 module.exports = {

@@ -7,8 +7,16 @@ const addCategory = async (req,res) => {
 };
 
 const getCategories = async (req,res) => {
-    const categories = await categoryService.getAllCategories();
-    res.render('category', { categories });
+    try {
+        const categories = await categoryService.getAllCategories();
+        if (req.headers.accept && req.headers.accept.includes('application/json')) {
+            res.json(categories);
+        } else {
+            res.render('category', { categories });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching categories' });
+    }
 };
 
 const deleteCategory = async (req,res) => {

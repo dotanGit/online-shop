@@ -32,14 +32,14 @@ const deleteProduct = async (req,res) => {
 };
 
 
-const updateProduct = async(req,res) => {
-    try
-    {
-        const id= req.params.id;
+const updateProduct = async (req, res) => {
+    try {
+        const id = req.params.id;
         const { name, price, category } = req.body;
-        await productService.updateProduct(id, name,price,category);
+        await productService.updateProduct(id, name, price, category);
         res.status(200).json({ message: 'Product updated successfully' });
     } catch (error) {
+        console.log('Error:', error);
         res.status(500).json({ message: 'Error updating product', error });
     }
 };

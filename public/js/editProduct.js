@@ -1,31 +1,50 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Select all edit buttons
-    const editButtons = document.querySelectorAll('.edit-btn');
-    
-    // Iterate through each button and add a click event listener
-    editButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Capture the data attributes
-            const productId = this.dataset.productId;
-            const productName = this.dataset.productName;
-            const productPrice = this.dataset.productPrice;
-            const productCategory = this.dataset.productCategory;
-            
-            // Use the captured data as needed
-            console.log('Product ID:', productId);
-            console.log('Product Name:', productName);
-            console.log('Product Price:', productPrice);
-            console.log('Product Category:', productCategory);
+document.addEventListener('DOMContentLoaded', () => {
+    const editProductButtons = document.querySelectorAll('.edit-product-btn');
+    const editProductModal = new bootstrap.Modal(document.getElementById('editProductModal'));
+    const saveChangesButton = document.getElementById('saveChangesButton');
 
-            // Example: Populate a form with the captured data
-            // document.getElementById('product-id').value = productId;
-            // document.getElementById('product-name').value = productName;
-            // document.getElementById('product-price').value = productPrice;
-            // document.getElementById('product-category').value = productCategory;
+    let selectedProductId;
 
-            // Show the modal
-            const editProductModal = new bootstrap.Modal(document.getElementById('editProductModal'));
+    editProductButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const buttonElement = event.currentTarget;
+            selectedProductId = buttonElement.getAttribute('data-product-id');
+            const productName = buttonElement.getAttribute('data-product-name');
+            const productPrice = buttonElement.getAttribute('data-product-price');
+            const productCategory = buttonElement.getAttribute('data-product-category');
+
+            document.getElementById('editProductName').value = productName;
+            document.getElementById('editProductPrice').value = productPrice;
+            document.getElementById('editProductCategory').value = productCategory;
+
             editProductModal.show();
         });
+    });
+
+    saveChangesButton.addEventListener('click', async () => {
+        const updatedProduct = {
+            name: document.getElementById('editProductName').value,
+            price: document.getElementById('editProductPrice').value,
+            category: document.getElementById('editProductCategory').value
+        };
+
+        try {
+            const response = await fetch(`/products/${selectedProductId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedProduct)
+            });
+
+            if (response.ok) {
+                location.reload();
+            } else {
+                const errorData = await response.json();
+                alert(`Error: ${errorData.message}`);
+            }
+        } catch (error) {
+            alert('Error updating product. Please try again.');
+        }
     });
 });

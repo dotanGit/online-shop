@@ -55,7 +55,7 @@
                     <% products.forEach(product => { %>
                         <tr>
                             <td><button 
-                                class="edit-btn" type="button"
+                                class="edit-product-btn"
                                 data-product-id="<%= product._id %>"
                                 data-product-name="<%= product.name %>"
                                 data-product-price="<%= product.price %>"
@@ -78,21 +78,38 @@
 
     
     <!-- Modal -->
-    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-bs-labelledby="editProductModalLabel" aria-bs-hidden="true">
+    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="editProductModalLabel">Modal title</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                ...
+                    <form id="editProductForm">
+                        <div class="form-group">
+                            <label for="editProductName">Name</label>
+                            <input type="text" class="form-control" id="editProductName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editProductPrice">Price</label>
+                            <input type="text" class="form-control" id="editProductPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editProductCategory">Category</label>
+                            <select class="form-control" id="editProductCategory" required>
+                                <% categories.forEach(category => { %>
+                                    <option value="<%= category._id %>"><%= category.name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
                 </div>
             </div>
         </div>

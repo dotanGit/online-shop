@@ -1,4 +1,3 @@
-
 // Navbar icon for smaller page size
 
 const bar = document.getElementById('bar');
@@ -41,4 +40,3 @@ smallImg[3].onclick = function() {
 }
 
 
-// $('#test').click(() => $('#exampleModal').toggle())

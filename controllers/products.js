@@ -21,6 +21,7 @@ const getProducts = async (req,res) => {
     res.render('products', { products, categories , selectedCategoryName});
 };
 
+
 const deleteProduct = async (req,res) => {
     const id = req.params.id;
     try { 

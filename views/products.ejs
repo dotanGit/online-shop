@@ -4,40 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Products</h1>
-    <form action="/products" method="get">
-        <label for="category">Filter by Category:</label>
-        <select name="category" id="category">
-            <option value="">All Categories</option>
-            <% categories.forEach(category => { %>
-                <option value="<%= category._id %>"><%= category.name %></option>
-            <% }) %>
-        </select>
-        <button type="submit">Filter</button>
-        <a href="/categories" style="display: inline;">
-            <button type="button">Manage Categories</button>
-        </a>
-    </form>
-    <% if (selectedCategoryName !== 'All Categories') { %>
-        <h2>Category: <%= selectedCategoryName %></h2>
-    <% } %>
-    <ul>
-        <% products.forEach(product => { %>
-            <li>
-                <%= product.name %> - <%= product.price %> - <%= product.category.name %> 
-                <button class="edit-product-btn" data-product-id="<%= product._id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>" data-product-category="<%= product.category._id %>">Edit</button>
-                <button class="delete-product-btn" data-product-id="<%= product._id %>">Delete</button>
-            </li>
-        <% }) %>
-    </ul>
     
-    <button id="add-product-btn">Add New Product</button>
+    <!-- Header / Navbar -->
+    <section id="header" class="container-fluid">
+        <a href="#"><img src ="/img/logo.png" class="logo" alt=""></a>
+        <h2>Products</h2>
+    </section>
 
+
+    <!-- Products Funcuality -->
+    <section id="funcuality" class="section-p1">
+        <button id="add-product-btn" class="normal">Add New Product</button>
+        <a href="/categories"><button id="manage-categories-btn" class="normal" type="button">Manage Categories</button></a>
+        <form action="/products" method="get">
+            <h4>Filter Catgeory : </h4>
+            <select name="category" id="select-category">
+                <option value="">All Categories</option>
+                <% categories.forEach(category => { %>
+                    <option value="<%= category._id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+            <button id="filter-btn" class="normal">Filter</button>
+        </form>
+    </section>
+
+    <section id="category-header"> 
+        <% if (selectedCategoryName !== 'All Categories') { %>
+            <h2>Category : <span><%= selectedCategoryName %></span></h2>
+        <% } %>
+    </section>
+
+    <section id="products-details">
+        <section id="cart" class="section-p1">
+            <table>
+                <thead>  <!-- tr = table row  | tb = table data | thead = header row -->
+                    <tr> 
+                        <td>Edit</td>
+                        <td>Image</td>
+                        <td>Product Name</td>
+                        <td>Catgeory</td>
+                        <td>Description</td>
+                        <td>Price</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td><a href="#" class="edit-product-btn" data-product-id="<%= product._id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>" data-product-category="<%= product.category._id %>"><i class="bi bi-pencil-square"></i></a></td>    
+                            <td><img src="img/products/f1.jpg" alt=""></td>                 
+                            <td> <%= product.name %> </td>                                  
+                            <td> <%= product.category.name %> </td>                         
+                            <td class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Quisque arcu massa, sagittis quis urna vitae, posuere lacinia mauris.</td>
+                            <td> <%= product.price %> </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            </section>
+    </section>
+
+    <script src="script.js"></script>
     <script src="/js/addProduct.js"></script>
     <script src="/js/editProduct.js"></script>
     <script src="/js/deleteProductConfirmation.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></body>
 </html>

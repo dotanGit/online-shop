@@ -59,13 +59,14 @@
                                 data-product-id="<%= product._id %>"
                                 data-product-name="<%= product.name %>"
                                 data-product-price="<%= product.price %>"
-                                data-product-category="<%= product.category._id %>">
+                                data-product-category="<%= product.category._id %>"
+                                data-product-description="<%= product.description %>">
                                 <i class="bi bi-pencil-square"></i>
                             </button></td>    
                             <td><img src="img/products/f1.jpg" alt=""></td>                 
                             <td> <%= product.name %> </td>                                  
                             <td> <%= product.category.name %> </td>                         
-                            <td class="desc" data-product-description> <%= product.description %> </td>
+                            <td class="desc"> <%= product.description %> </td>
                             <td> <%= product.price %> </td>
                         </tr>
                     <% }) %>

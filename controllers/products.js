@@ -36,8 +36,9 @@ const deleteProduct = async (req,res) => {
 const updateProduct = async (req, res) => {
     try {
         const id = req.params.id;
-        const { name, price, category, desc } = req.body;
-        await productService.updateProduct(id, name, price, category, desc);
+        const { name, price, category, description } = req.body;
+        console.log(description)
+        await productService.updateProduct(id, name, price, category, description);
         res.status(200).json({ message: 'Product updated successfully' });
     } catch (error) {
         console.log('Error:', error);

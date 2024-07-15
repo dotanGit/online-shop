@@ -13,23 +13,36 @@
     <!-- Header / Navbar -->
     <section id="header" class="container-fluid">
         <a href="#"><img src="/img/logo.png" class="logo" alt=""></a>
-        <h2>Products</h2>
+        <ul id="navbar">
+            <li><a  href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a class="active" href="/products">Products Managment</a></li>
+            <li id="lg-bag"><a href="cart.html"><i class="bi bi-bag"></i></a></li>
+            <i id="close" class="bi bi-x-lg"></i>
+        </ul>
     </section>
 
     <!-- Products Funcuality -->
     <section id="funcuality" class="section-p1">
-        <button id="add-product-btn" class="normal">Add New Product</button>
-        <a href="/categories"><button id="manage-categories-btn" class="normal" type="button">Manage Categories</button></a>
-        <form action="/products" method="get">
-            <h4>Filter Catgeory : </h4>
-            <select name="category" id="select-category">
-                <option value="">All Categories</option>
-                <% categories.forEach(category => { %>
-                    <option value="<%= category._id %>"><%= category.name %></option>
-                <% }) %>
-            </select>
-            <button id="filter-btn" class="normal">Filter</button>
-        </form>
+        <div class="head-line">
+            <h2><u>Products Managment : </u></h2>
+        </div>
+        <div class="options">
+            <button id="add-product-btn" class="normal">Add New Product</button>
+            <form action="/products" method="get">
+                <h4>Filter Catgeory : </h4>
+                <select name="category" id="select-category">
+                    <option value="">All Categories</option>
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category._id %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
+                <button id="filter-btn" class="normal">Filter</button>
+            </form>
+        </div>
     </section>
 
     <section id="category-header"> 
@@ -77,6 +90,7 @@
   
 
 
+
     <!-- Edit Modal -->
     <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -116,7 +130,6 @@
             </div>
         </div>
     </div>
-
 
 
     <!-- Add Modal -->

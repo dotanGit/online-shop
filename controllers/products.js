@@ -2,7 +2,7 @@ const productService = require('../services/products');
 const categoryService = require('../services/category');
 
 const addProduct = async (req,res) => {
-    await productService.addProduct(req.body.name,req.body.price,req.body.category);
+    await productService.addProduct(req.body.name,req.body.price,req.body.category,req.body.description);
     res.redirect('/products');
 };
 
@@ -36,8 +36,8 @@ const deleteProduct = async (req,res) => {
 const updateProduct = async (req, res) => {
     try {
         const id = req.params.id;
-        const { name, price, category } = req.body;
-        await productService.updateProduct(id, name, price, category);
+        const { name, price, category, desc } = req.body;
+        await productService.updateProduct(id, name, price, category, desc);
         res.status(200).json({ message: 'Product updated successfully' });
     } catch (error) {
         console.log('Error:', error);

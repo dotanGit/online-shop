@@ -16,11 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const productName = buttonElement.getAttribute('data-product-name');
             const productPrice = buttonElement.getAttribute('data-product-price');
             const productCategory = buttonElement.getAttribute('data-product-category');
+            const productDesc = buttonElement.getAttribute('data-product-description');
 
             document.getElementById('editProductModalLabel').innerText = "Edit Product: " + productName;
             document.getElementById('editProductName').value = productName;
             document.getElementById('editProductPrice').value = productPrice;
             document.getElementById('editProductCategory').value = productCategory;
+            document.getElementById('editProductDesc').value = productDesc;
 
 
             editProductModal.show();
@@ -31,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const updatedProduct = {
             name: document.getElementById('editProductName').value,
             price: document.getElementById('editProductPrice').value,
-            category: document.getElementById('editProductCategory').value
+            category: document.getElementById('editProductCategory').value,
+            description: document.getElementById('editProductDesc').value
         };
 
         try {
@@ -89,7 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const newProduct = {
             name: document.getElementById('addProductName').value,
             price: document.getElementById('addProductPrice').value,
-            category: document.getElementById('addProductCategory').value
+            category: document.getElementById('addProductCategory').value,
+            description: document.getElementById('addProductDesc').value
         };
         
 

@@ -38,10 +38,10 @@ const deleteCategory = async (req,res) => {
 
 const updateCategory = async(req,res) => {
     try {
-    const id= req.params.id;
-    const name = req.body.name;
-    await categoryService.updateCategory(id, name);
-    res.status(200).json({ message: 'Category updated successfully' });
+        const id= req.params.id;
+        const name = req.body.name;
+        await categoryService.updateCategory(id, name);
+        res.status(200).json({ message: 'Category updated successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error updating Category', error });
     }

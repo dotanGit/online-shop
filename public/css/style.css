@@ -1064,6 +1064,7 @@ footer .my-account {
 #funcuality .head-line {
     display: flex;
     justify-content: center;
+    padding-bottom: 10px;
 }
 
 #funcuality .head-line h2 {
@@ -1075,6 +1076,7 @@ footer .my-account {
     display: flex;
     justify-content: center;
 }
+
 
 #funcuality form {
     display: flex;
@@ -1111,7 +1113,7 @@ footer .my-account {
 }
 
 #category-header h2{
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #category-header h2 span{
@@ -1119,23 +1121,30 @@ footer .my-account {
 }
 
 #cart tbody tr td button:hover,
-#editProductModal .modal-dialog .modal-content .modal-header button:hover{
+#editProductModal .modal-dialog .modal-content .modal-header button:hover,
+#editCategoryModal .modal-dialog .modal-content .modal-header button:hover{
     color: #088178;
 }
 
 #editProductModal .modal-dialog .modal-content .modal-header,
-#addProductModal .modal-dialog .modal-content .modal-header {
+#addProductModal .modal-dialog .modal-content .modal-header,
+#editCategoryModal .modal-dialog .modal-content .modal-header,
+#addCategoryModal .modal-dialog .modal-content .modal-header {
     display: flex;
     justify-content: space-between;
 }
 
 #editProductForm .form-group,
-#addProductForm .form-group{
+#addProductForm .form-group,
+#editCategoryForm .form-group,
+#addCategoryForm .form-group{
     padding: 15px;
 }
 
 #editProductModal .modal-dialog .modal-content .modal-footer,
-#addProductModal .modal-dialog .modal-content .modal-footer{
+#addProductModal .modal-dialog .modal-content .modal-footer,
+#editCategoryModal .modal-dialog .modal-content .modal-footer,
+#addCategoryModal .modal-dialog .modal-content .modal-footer{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;

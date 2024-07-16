@@ -20,9 +20,15 @@
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
             <li><a class="active" href="/products">Products Managment</a></li>
+            <li><a href="/categories">Categories Managment</a></li>
             <li id="lg-bag"><a href="cart.html"><i class="bi bi-bag"></i></a></li>
             <i id="close" class="bi bi-x-lg"></i>
         </ul>
+
+        <div id="mobile">
+            <a href="cart.html"><i class="bi bi-bag"></i></a>
+            <i id="bar" class="bi bi-list"></i>
+        </div>
     </section>
 
     <!-- Products Funcuality -->
@@ -80,7 +86,7 @@
                             <td> <%= product.name %> </td>                                  
                             <td> <%= product.category.name %> </td>                         
                             <td class="desc"> <%= product.description %> </td>
-                            <td> <%= product.price %> </td>
+                            <td id="productPrice"> $<%= product.price %></td>
                         </tr>
                     <% }) %>
                 </tbody>

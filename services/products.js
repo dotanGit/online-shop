@@ -1,4 +1,5 @@
 const Product = require('../models/products');
+const Category = require('../models/category');
 
 const addProduct = async (name,price,category,description) => {
     const product = new Product({
@@ -8,7 +9,11 @@ const addProduct = async (name,price,category,description) => {
         description : description
     });
 
-    return await product.save();
+    const savedProduct = await product.save();
+
+    await Category.findByIdAndUpdate(category, { $inc: { productCount: 1 } });
+
+    return savedProduct;
 };
 
 const getAllProducts = async() => {
@@ -16,7 +21,13 @@ const getAllProducts = async() => {
 };
 
 const deleteProduct = async (id) => {
-    return await Product.findByIdAndDelete(id);
+    const product = await Product.findByIdAndDelete(id);
+
+    if (product) {
+        await Category.findByIdAndUpdate(product.category, { $inc: { productCount: -1 } });
+    }
+
+    return product;
 };
 
 const getProductById = async (id) => {

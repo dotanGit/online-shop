@@ -6,6 +6,10 @@ const Category = new Schema ({
         type: String,
         required: true,
         unique: true
+      },
+      productCount: { 
+        type: Number, 
+        default: 0 
       }
 });
 

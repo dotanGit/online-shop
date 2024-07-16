@@ -11,7 +11,12 @@ const category = require('./routes/category');
 const env = process.env.NODE_ENV || 'local';
 require('custom-env').env(env, './config');
 
-mongoose.connect(process.env.CONNECTION_STRING);
+mongoose.connect(process.env.CONNECTION_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+});
 
 var app = express();
 

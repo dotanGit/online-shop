@@ -9,6 +9,8 @@ const home = require('./routes/home');
 const shop = require('./routes/shop');
 const blog = require('./routes/blog');
 const about = require('./routes/about');
+const contact = require('./routes/contact');
+const cart = require('./routes/cart');
 const products = require('./routes/products');
 const category = require('./routes/category');
 
@@ -40,6 +42,8 @@ app.use('/', home);
 app.use('/shop', shop);
 app.use('/blog', blog);
 app.use('/about', about);
+app.use('/contact', contact);
+app.use('/cart', cart);
 app.use('/products', products);
 app.use('/categories', category);
 

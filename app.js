@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 
 
 const home = require('./routes/home');
+const shop = require('./routes/shop');
 const products = require('./routes/products');
 const category = require('./routes/category');
 
@@ -34,6 +35,7 @@ app.use(methodOverride('_method'));
 
 
 app.use('/', home);
+app.use('/shop', shop);
 app.use('/products', products);
 app.use('/categories', category);
 

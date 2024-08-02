@@ -18,12 +18,12 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/shop">Shop</a></li>
                 <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a class="active" href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/products">Products Managment</a></li>
                 <li><a href="/categories">Categories Managment</a></li>
-                <li id="lg-bag"><a class="active" href="/cart"><i class="bi bi-bag"></i></a></li>
-                <li id="lg-bag"><a href="/login"><i class="bi bi-person-circle"></i></a></li>
+                <li id="lg-bag"><a href="/cart"><i class="bi bi-bag"></i></a></li>
+                <li id="lg-bag"><a class="active" href="/login"><i class="bi bi-person-circle"></i></a></li>
                 <i id="close" class="bi bi-x-lg"></i>
             </ul>
         </div>
@@ -35,80 +35,23 @@
 
     </section>
 
-    <!-- Main -->
-     <section id="page-header" class="about-header">
-        <h2>#lets talk</h2>
-        <p>LEAVE A MASSAGE, we will contact you</p>
-     </section>
+    <section id="login-form" class="section-p1">
+      <span>LEAVE A MASSAGE</span>
+      <h2>We love to hear from you</h2>
+    </section>
 
-     <section id="cart" class="section-p1">
-        <table>
-            <thead>  <!-- tr = table row  | tb = table data | thead = header row -->
-                <tr> 
-                    <td>Remove</td>
-                    <td>Image</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#"><i class="bi bi-x-circle"></i></a></td>
-                    <td><img src="img/products/f1.jpg" alt=""></td>
-                    <td>Lorem ipsum dolor sit amet, consectetur.</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>118.19$</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="bi bi-x-circle"></i></a></td>
-                    <td><img src="img/products/f2.jpg" alt=""></td>
-                    <td>Lorem ipsum dolor sit amet, consectetur.</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>118.19$</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="bi bi-x-circle"></i></a></td>
-                    <td><img src="img/products/f3.jpg" alt=""></td>
-                    <td>Lorem ipsum dolor sit amet, consectetur.</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>118.19$</td>
-                </tr>
-            </tbody>
-        </table>
-     </section>
-
-     <section id="cart-add" class="section-p1">
-        <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <div>
-                <input type="text" placeholder="Enter Your Coupon">
-                <button class="normal">Apply</button>
-            </div>
-        </div>
-        <div id="subtotal">
-            <h3>Cart Total</h3>
-            <table>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td>$335</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>$335</strong></td>
-                </tr>
-            </table>
-            <button class="normal">Procced to checkout</button>
-        </div>
-     </section>
+    <section id="form-details">
+      <form action="/login" method="post">
+          <input name="username" placeholder="Username">
+          <input name="password" type="password" placeholder="password">
+          <button class="normal" type="submit">Submit</button>
+      </form>  
+    </section>
+    <a href="/login/register">Register</a>
+    <script>
+      if (location.href.endsWith("error=1"))
+          document.body.innerHTML += "<b>Username and / or password is incorrect"
+    </script>  
 
     <!-- Footer -->
     <footer class="section-p1">
@@ -132,11 +75,11 @@
 
         <div class="col about">
             <h4>About</h4>
-            <a href="#">About Us</a>
+            <a href="/about">About Us</a>
             <a href="#">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="/contact">Contact Us</a>
         </div>
 
         <div class="col my-account">

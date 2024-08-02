@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-
+const session = require('express-session');
 
 const home = require('./routes/home');
 const shop = require('./routes/shop');
@@ -13,6 +13,7 @@ const contact = require('./routes/contact');
 const cart = require('./routes/cart');
 const products = require('./routes/products');
 const category = require('./routes/category');
+const login = require('./routes/login');
 
 const env = process.env.NODE_ENV || 'local';
 require('custom-env').env(env, './config');
@@ -36,6 +37,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(session({
+    secret: 'foo',    
+    saveUninitialized: false,
+    resave: false
+}))
 
 
 app.use('/', home);
@@ -46,6 +52,6 @@ app.use('/contact', contact);
 app.use('/cart', cart);
 app.use('/products', products);
 app.use('/categories', category);
-
+app.use('/login', login);
 
 app.listen(process.env.PORT);

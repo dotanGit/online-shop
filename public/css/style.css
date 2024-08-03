@@ -1154,6 +1154,75 @@ footer .my-account {
     width: 100px;
 }
 
+
+/*-------------------------------------------------------------------------------------------------------------------
+                                                    Sign in
+---------------------------------------------------------------------------------------------------------------------*/
+
+#sign-in-header {
+    text-align: center;
+    padding-top: 30px;
+}
+
+#sign-in-header h2 {
+    padding-bottom: 13px;
+}
+
+#sign-in-header h4 {
+    padding-top: 13px;
+    color: #088178;
+}
+
+#sign-in-header a {
+    text-decoration: none;
+}
+
+#login-register-details {
+    display: flex;
+    justify-content: center; 
+    margin: 30px auto; 
+    padding: 50px; 
+    border: 1px solid #e1e1e1;
+    width: 40%;
+    box-sizing: border-box; 
+}
+
+#login-register-details form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box; 
+}
+
+#login-register-details h4 {
+    margin: 10px 0; 
+}
+
+#login-register-details input {
+    width: 100%; 
+    margin-bottom: 20px; 
+    padding: 10px; 
+    box-sizing: border-box; 
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    margin-top: 10px; 
+}
+
+
+#login-register-details button.normal {
+    background-color: #088178;
+    color: white;
+}
+
+
+
+
+
 /*-------------------------------------------------------------------------------------------------------------------
                                                     @media
 ---------------------------------------------------------------------------------------------------------------------*/

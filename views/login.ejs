@@ -18,7 +18,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/shop">Shop</a></li>
                 <li><a href="/blog">Blog</a></li>
-                <li><a class="active" href="/about">About</a></li>
+                <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/products">Products Managment</a></li>
                 <li><a href="/categories">Categories Managment</a></li>
@@ -35,23 +35,24 @@
 
     </section>
 
-    <section id="login-form" class="section-p1">
-      <span>LEAVE A MASSAGE</span>
-      <h2>We love to hear from you</h2>
+    <section id="sign-in-header">
+        <h2>Sign in</h2>
+        <span>Not a Member ?<br>
+        <a href="/login/register"><h4>Register Now Here!</h4></a></span>
     </section>
 
-    <section id="form-details">
-      <form action="/login" method="post">
-          <input name="username" placeholder="Username">
-          <input name="password" type="password" placeholder="password">
-          <button class="normal" type="submit">Submit</button>
-      </form>  
-    </section>
-    <a href="/login/register">Register</a>
-    <script>
-      if (location.href.endsWith("error=1"))
-          document.body.innerHTML += "<b>Username and / or password is incorrect"
-    </script>  
+    <section id="login-register-details">
+        <form id="login-form" action="/login" method="post">
+          <h4>Username :</h4>
+          <input name="username" placeholder="username...">
+          <h4>Password :</h4>
+          <input name="password" type="password" placeholder="password...">
+          <div id="error-message" style="color: red; display: none;"></div> <!-- Error message container -->
+          <div class="button-container">
+            <button class="normal" type="submit">Sign in</button>
+          </div>
+        </form>
+      </section>
 
     <!-- Footer -->
     <footer class="section-p1">
@@ -107,7 +108,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/invalidLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

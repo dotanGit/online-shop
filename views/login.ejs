@@ -42,17 +42,17 @@
     </section>
 
     <section id="login-register-details">
-        <form action="/login" method="post">
-            <h4>Username :</h4>
-            <input name="username" placeholder="username...">
-            <h4>Password :</h4>
-            <input name="password" type="password" placeholder="password...">
-            <div class="button-container">
-                <button class="normal" type="submit">Sign in</button>
-            </div>
+        <form id="login-form" action="/login" method="post">
+          <h4>Username :</h4>
+          <input name="username" placeholder="username...">
+          <h4>Password :</h4>
+          <input name="password" type="password" placeholder="password...">
+          <div id="error-message" style="color: red; display: none;"></div> <!-- Error message container -->
+          <div class="button-container">
+            <button class="normal" type="submit">Sign in</button>
+          </div>
         </form>
     </section>
-    
 
     <!-- Footer -->
     <footer class="section-p1">

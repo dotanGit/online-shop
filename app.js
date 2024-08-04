@@ -14,6 +14,8 @@ const cart = require('./routes/cart');
 const products = require('./routes/products');
 const category = require('./routes/category');
 const login = require('./routes/login');
+const account = require('./routes/account'); // New router for unprefixed routes
+
 
 const env = process.env.NODE_ENV || 'local';
 require('custom-env').env(env, './config');
@@ -41,7 +43,12 @@ app.use(session({
     secret: 'foo',    
     saveUninitialized: false,
     resave: false
-}))
+}));
+
+app.use((req, res, next) => {
+    res.locals.username = req.session.username;
+    next();
+});
 
 
 app.use('/', home);
@@ -53,5 +60,7 @@ app.use('/cart', cart);
 app.use('/products', products);
 app.use('/categories', category);
 app.use('/login', login);
+app.use('/', account);
+
 
 app.listen(process.env.PORT);

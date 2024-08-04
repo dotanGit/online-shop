@@ -7,9 +7,6 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login')
 }
 
-function foo(req, res) {  
-  res.render("foo", {username: req.session.username})
-}
 
 function loginForm(req, res) { res.render("login", {}) }
 
@@ -17,7 +14,7 @@ function registerForm(req, res) { res.render("register", {}) }
 
 function logout(req, res) {
   req.session.destroy(() => {
-    res.redirect('/login');
+    res.redirect('/');
   });
 }
 
@@ -47,12 +44,16 @@ async function register(req, res) {
   }    
 }
 
+function accountDetails(req, res) {
+  res.render("account", { username: req.session.username });
+}
+
 module.exports = {
   login,
   loginForm,
   register,
   registerForm,
   logout,
-  foo,
-  isLoggedIn
+  isLoggedIn,
+  accountDetails
 }

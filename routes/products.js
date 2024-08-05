@@ -6,6 +6,7 @@ router.get('/',productsContorller.getProducts);  // This will be /products/
 router.post('/',productsContorller.addProduct);  // This will be /products/
 router.delete('/:id',productsContorller.deleteProduct);
 router.put('/:id',productsContorller.updateProduct); 
+router.get('/product/:id',productsContorller.getProductById);
 
 
 module.exports = router;

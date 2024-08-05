@@ -46,8 +46,38 @@
         <p>Save more with coupons & up to 70% off!</p>
     </section>
   
+
     <!-- Products -->
     <section id="product1" class="section-p1">
+        <div class="container-fluid">
+            <div class="row">
+                <% products.forEach(product => { %>
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="pro" onclick="window.location.href='/products/product/<%= product._id %>';">
+                        <img src="img/products/f1.jpg" alt="">
+                        <div class="des">
+                            <span><%= product.category.name %></span>
+                            <h5><%= product.name %></h5>
+                            <div class="star">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <h4>$<%= product.price %></h4>
+                        </div>
+                        <a href="#"><i class="bi bi-cart"></i></a>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Products -->
+    <!-- <section id="product1" class="section-p1">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6">
@@ -340,7 +370,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Pagination -->
      <section id="pagination" class="section-p1">

@@ -1,10 +1,12 @@
 const productService = require('../services/products');
 const categoryService = require('../services/category');
+const { render } = require('ejs');
 
 const addProduct = async (req,res) => {
     await productService.addProduct(req.body.name,req.body.price,req.body.category,req.body.description);
     res.redirect('/products');
 };
+
 
 const getProducts = async (req,res) => {
     let products;
@@ -46,9 +48,21 @@ const updateProduct = async (req, res) => {
     }
 };
 
+const getProductById = async (req, res) => {
+    try {
+        const product = await productService.getProductById(req.params.id);
+        res.render('sp', { product });
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).send('Internal Server Error');
+    }
+};
+
+
 module.exports = {
     addProduct,
     getProducts,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getProductById
 };

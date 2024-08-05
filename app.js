@@ -39,6 +39,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.json());
 app.use(methodOverride('_method'));
+
 app.use(session({
     secret: 'foo',    
     saveUninitialized: false,

@@ -24,6 +24,9 @@ async function login(req, res) {
   const result = await loginService.login(username, password)
   if (result) {
     req.session.username = username
+    req.session.email = result.email
+    req.session.phoneNumber = result.phoneNumber
+    req.session.address = result.address
     res.redirect('/')
   }
   else
@@ -31,11 +34,11 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-  const { username, password } = req.body
+  const { username, password, email, phoneNumber, address } = req.body
 
 
   try {
-    await loginService.register(username, password)    
+    await loginService.register(username, password, email, phoneNumber, address)    
     req.session.username = username
     res.redirect('/')
   }
@@ -45,7 +48,8 @@ async function register(req, res) {
 }
 
 function accountDetails(req, res) {
-  res.render("account", { username: req.session.username });
+  console.log("Account details:", req.session); // Debug statement
+  res.render("account", { username: req.session.username, email: req.session.email, phoneNumber: req.session.phoneNumber, address: req.session.address });
 }
 
 module.exports = {

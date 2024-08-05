@@ -8,11 +8,13 @@ async function getCart(userId) {
 async function addToCart(userId, productId, quantity) {
   const user = await User.findById(userId);
 
+  const quantityNumber = parseInt(quantity, 10); // Convert quantity to a number
+
   const cartItem = user.cart.find(item => item.productId === productId);
   if (cartItem) {
-    cartItem.quantity += quantity;
+    cartItem.quantity += quantityNumber;
   } else {
-    user.cart.push({ productId, quantity });
+    user.cart.push({ productId, quantity: quantityNumber });
   }
 
   await user.save();

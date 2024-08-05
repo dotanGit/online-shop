@@ -1,10 +1,12 @@
 const loginService = require("../services/login")
 
+
 function isLoggedIn(req, res, next) {
-  if (req.session.username != null)
-    return next()
-  else
-    res.redirect('/login')
+  if (req.session.username) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
 }
 
 
@@ -19,19 +21,26 @@ function logout(req, res) {
 }
 
 async function login(req, res) {
-  const { username, password } = req.body
+  const { username, password } = req.body;
 
-  const result = await loginService.login(username, password)
+  const result = await loginService.login(username, password);
   if (result) {
-    req.session.username = username
-    req.session.email = result.email
-    req.session.phoneNumber = result.phoneNumber
-    req.session.address = result.address
-    res.redirect('/')
+    req.session.username = username;
+    req.session.email = result.email;
+    req.session.phoneNumber = result.phoneNumber;
+    req.session.address = result.address;
+    res.redirect('/');
+  } else {
+    res.redirect('/login?error=1');
   }
-  else
-    res.redirect('/login?error=1')
 }
+
+module.exports = {
+  login,
+  // Other functions...
+};
+
+
 
 async function register(req, res) {
   const { username, password, email, phoneNumber, address } = req.body

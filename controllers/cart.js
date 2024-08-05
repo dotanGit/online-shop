@@ -7,8 +7,13 @@ async function viewCart(req, res) {
 
 async function addToCart(req, res) {
   const { productId, quantity } = req.body;
-  await cartService.addToCart(req.session.username, productId, quantity);
-  res.redirect('/cart');
+  try {
+    await cartService.addToCart(req.session.username, productId, quantity);
+    res.json({ message: 'Product added to cart' });
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    res.status(500).json({ message: 'Error adding to cart' });
+  }
 }
 
 module.exports = { viewCart, addToCart };

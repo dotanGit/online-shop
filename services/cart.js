@@ -37,6 +37,8 @@ async function getAccountDetails(userId) {
   return {
     username: user._id,
     email: user.email,
+    phoneNumber: user.phoneNumber,
+    address: user.address,
     cart: user.cart,
     purchaseHistory: user.purchaseHistory
   };

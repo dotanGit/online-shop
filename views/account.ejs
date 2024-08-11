@@ -44,18 +44,9 @@
 <h1>My Account</h1>
 <p>Welcome, <%= username %>!</p>
 <p>Email: <%= email %></p>
-<h2>My Cart</h2>
-<ul>
-  <% cart.forEach(item => { %>
-    <li>Product ID: <%= item.productId %>, Quantity: <%= item.quantity %></li>
-  <% }) %>
-</ul>
-<h2>Purchase History</h2>
-<ul>
-  <% purchaseHistory.forEach(item => { %>
-    <li>Product ID: <%= item.productId %>, Quantity: <%= item.quantity %>, Purchased At: <%= item.purchasedAt %></li>
-  <% }) %>
-</ul>
+<p>Phone: <%= phoneNumber %></p>
+<p>Address: <%= address %></p>
+
 <p><a href="/logout">Logout</a></p>
 </body>
 </html>

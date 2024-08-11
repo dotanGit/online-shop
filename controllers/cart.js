@@ -1,8 +1,8 @@
 const cartService = require('../services/cart');
 
 async function viewCart(req, res) {
-  const cart = await cartService.getCart(req.session.username);
-  res.render('cart', { cart });
+  const { cartItems, totalCartPrice } = await cartService.getCart(req.session.username);
+  res.render('cart', { cartItems , totalCartPrice});
 }
 
 async function addToCart(req, res) {

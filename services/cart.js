@@ -15,7 +15,11 @@ async function getCart(userId) {
       totalPrice: item.quantity * productPrice
     };
   }));
-  return cartItems;
+  
+  // Calculate the total price of all items in the cart
+  const totalCartPrice = cartItems.reduce((total, item) => total + item.totalPrice, 0);
+
+  return { cartItems, totalCartPrice };
 }
 
 async function addToCart(userId, productId, quantity) {

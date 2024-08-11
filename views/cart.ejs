@@ -59,7 +59,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% cart.forEach(item => { %>
+                <% cartItems.forEach(item => { %>
                     <tr>
                         <td><a href="#"><i class="bi bi-x-circle"></i></a></td>
                         <td><img src="img/products/f1.jpg" alt=""></td>
@@ -86,7 +86,7 @@
             <table>
                 <tr>
                     <td>Cart Subtotal</td>
-                    <td>$335</td>
+                    <td>$<%= totalCartPrice %></td>
                 </tr>
                 <tr>
                     <td>Shipping</td>
@@ -94,7 +94,7 @@
                 </tr>
                 <tr>
                     <td><strong>Total</strong></td>
-                    <td><strong>$335</strong></td>
+                    <td><strong>$<%= totalCartPrice %></strong></td>
                 </tr>
             </table>
             <button class="normal">Procced to checkout</button>

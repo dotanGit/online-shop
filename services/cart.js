@@ -15,7 +15,7 @@ async function getCart(userId) {
       totalPrice: item.quantity * productPrice
     };
   }));
-  
+
   // Calculate the total price of all items in the cart
   const totalCartPrice = cartItems.reduce((total, item) => total + item.totalPrice, 0);
 
@@ -48,8 +48,18 @@ async function getAccountDetails(userId) {
   };
 }
 
+async function updateCartQuantity(userId, productId, quantity) {
+  const user = await User.findById(userId);
+  const cartItem = user.cart.find(item => item.productId === productId);
+  if (cartItem) {
+    cartItem.quantity = parseInt(quantity, 10);
+    await user.save();
+  }
+}
+
 module.exports = {
   getCart,
   addToCart,
-  getAccountDetails
+  getAccountDetails,
+  updateCartQuantity
 };

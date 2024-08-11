@@ -16,4 +16,19 @@ async function addToCart(req, res) {
   }
 }
 
-module.exports = { viewCart, addToCart };
+async function updateCartQuantity(req, res) {
+  const { productId, quantity } = req.body;
+  try {
+    await cartService.updateCartQuantity(req.session.username, productId, quantity);
+    res.status(200).json({ message: 'Quantity updated' });
+  } catch (error) {
+    console.error('Error updating cart quantity:', error);
+    res.status(500).json({ message: 'Error updating cart quantity' });
+  }
+}
+
+module.exports = { 
+  viewCart, 
+  addToCart,
+  updateCartQuantity
+ };

@@ -57,9 +57,16 @@ async function updateCartQuantity(userId, productId, quantity) {
   }
 }
 
+async function removeFromCart(userId, productId) {
+  const user = await User.findById(userId);
+  user.cart = user.cart.filter(item => item.productId !== productId);
+  await user.save();
+}
+
 module.exports = {
   getCart,
   addToCart,
   getAccountDetails,
-  updateCartQuantity
+  updateCartQuantity,
+  removeFromCart
 };

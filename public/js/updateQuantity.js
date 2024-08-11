@@ -22,3 +22,27 @@ document.querySelectorAll('input[type="number"]').forEach(input => {
         location.reload();
     });
 });
+
+document.querySelectorAll('.remove-item').forEach(button => {
+    button.addEventListener('click', async function(e) {
+        e.preventDefault();
+        const productId = this.dataset.productId;
+
+        const response = await fetch('/cart/remove', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ productId }),
+        });
+
+        if (response.ok) {
+            // Optionally, remove the item from the DOM
+            this.closest('tr').remove();
+            // Or refresh the page to see the updated cart
+            location.reload();
+        } else {
+            console.error('Failed to remove item from cart');
+        }
+    });
+});

@@ -27,8 +27,20 @@ async function updateCartQuantity(req, res) {
   }
 }
 
+async function removeFromCart(req, res) {
+  const { productId } = req.body;
+  try {
+    await cartService.removeFromCart(req.session.username, productId);
+    res.status(200).json({ message: 'Product removed from cart' });
+  } catch (error) {
+    console.error('Error removing from cart:', error);
+    res.status(500).json({ message: 'Error removing from cart' });
+  }
+}
+
 module.exports = { 
   viewCart, 
   addToCart,
-  updateCartQuantity
+  updateCartQuantity,
+  removeFromCart
  };

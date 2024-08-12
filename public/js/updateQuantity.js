@@ -64,7 +64,7 @@ document.querySelector('#checkout-button').addEventListener('click', async () =>
         if (response.ok) {
             alert('Order placed successfully!');
             // Optionally redirect to a confirmation page or clear cart in frontend
-            window.location.href = '/order-confirmation'; // Replace with actual route
+            window.location.href = '/'; // Replace with actual route
         } else {
             alert('Error: ' + result.message);
         }

@@ -18,8 +18,6 @@ const account = require('./routes/account');
 const order = require('./routes/order');
 
 
-
-
 const env = process.env.NODE_ENV || 'local';
 require('custom-env').env(env, './config');
 

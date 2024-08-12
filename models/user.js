@@ -14,11 +14,6 @@ const User = new Schema ({
         productId: String,
         quantity: Number
       }],
-      purchaseHistory: [{
-        productId: String,
-        quantity: Number,
-        purchasedAt: { type: Date, default: Date.now }
-      }]
 });
 
 module.exports = mongoose.model('User',User);

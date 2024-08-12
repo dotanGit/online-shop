@@ -35,20 +35,16 @@ async function login(req, res) {
   }
 }
 
-module.exports = {
-  login,
-  // Other functions...
-};
-
-
 
 async function register(req, res) {
   const { username, password, email, phoneNumber, address } = req.body
 
-
   try {
     await loginService.register(username, password, email, phoneNumber, address)    
     req.session.username = username
+    req.session.email = email
+    req.session.phoneNumber = phoneNumber
+    req.session.address = address
     res.redirect('/')
   }
   catch (e) { 

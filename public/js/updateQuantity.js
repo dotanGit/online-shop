@@ -46,3 +46,30 @@ document.querySelectorAll('.remove-item').forEach(button => {
         }
     });
 });
+
+
+
+document.querySelector('#checkout-button').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any necessary headers, like authorization if needed
+            }
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Order placed successfully!');
+            // Optionally redirect to a confirmation page or clear cart in frontend
+            window.location.href = '/order-confirmation'; // Replace with actual route
+        } else {
+            alert('Error: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error during checkout:', error);
+        alert('An error occurred during checkout.');
+    }
+});

@@ -14,7 +14,7 @@ const cart = require('./routes/cart');
 const products = require('./routes/products');
 const category = require('./routes/category');
 const login = require('./routes/login');
-const account = require('./routes/account'); // New router for unprefixed routes
+const account = require('./routes/account');
 
 
 const env = process.env.NODE_ENV || 'local';

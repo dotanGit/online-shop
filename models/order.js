@@ -3,17 +3,17 @@ const Schema = mongoose.Schema;
 
 const Order = new Schema({
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'User',
         required: true
     },
     items: [{
         productId: String,
-        quantity: Number,
-        price: Number
+        quantity: String,
+        price: String
     }],
     total: {
-        type: Number,
+        type: String,
         required: true
     },
     orderDate: {

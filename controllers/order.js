@@ -1,7 +1,7 @@
 const orderService = require('../services/order');
 
 async function checkout(req, res) {
-    const userId = req.user._id; // Assuming you're using some middleware for authentication
+    const userId = req.session.username;
 
     try {
         const order = await orderService.createOrder(userId);

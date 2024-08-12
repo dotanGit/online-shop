@@ -15,6 +15,7 @@ const products = require('./routes/products');
 const category = require('./routes/category');
 const login = require('./routes/login');
 const account = require('./routes/account');
+const order = require('./routes/order');
 
 
 
@@ -64,6 +65,8 @@ app.use('/products', products);
 app.use('/categories', category);
 app.use('/login', login);
 app.use('/', account);
+app.use('/', order);
+
 
 
 app.listen(process.env.PORT);

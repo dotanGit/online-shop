@@ -47,6 +47,7 @@
      </section>
 
      <section id="cart" class="section-p1">
+        <% if (cartItems.length !== 0) { %>
         <table>
             <thead>  <!-- tr = table row  | tb = table data | thead = header row -->
                 <tr> 
@@ -71,7 +72,6 @@
                 <% }) %>
             </tbody>
         </table>
-     </section>
 
      <section id="cart-add" class="section-p1">
         <div id="coupon">
@@ -100,6 +100,11 @@
             <button id="checkout-button" class="normal">Order Cart !</button>
         </div>
      </section>
+     <% } else { %>
+        <section id="empty-cart" class="section-p1">
+            <h1>Cart Is Empty</h1>
+        </section>
+     <% } %>
 
     <!-- Footer -->
     <footer class="section-p1">

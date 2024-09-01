@@ -1034,6 +1034,14 @@ footer .my-account {
     font-size: 13px;
 }
 
+#empty-cart {
+    text-align: center;
+    padding: 100px;
+}
+
+#empty-cart h1 {
+    color: #088178;
+}
 
 /*-------------------------------------------------------------------------------------------------------------------
                                                     Products For Admin

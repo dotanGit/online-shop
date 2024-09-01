@@ -1130,14 +1130,16 @@ footer .my-account {
 
 #cart tbody tr td button:hover,
 #editProductModal .modal-dialog .modal-content .modal-header button:hover,
-#editCategoryModal .modal-dialog .modal-content .modal-header button:hover{
+#editCategoryModal .modal-dialog .modal-content .modal-header button:hover
+#addToCartModal .modal-dialog .modal-content .modal-header button:hover{
     color: #088178;
 }
 
 #editProductModal .modal-dialog .modal-content .modal-header,
 #addProductModal .modal-dialog .modal-content .modal-header,
 #editCategoryModal .modal-dialog .modal-content .modal-header,
-#addCategoryModal .modal-dialog .modal-content .modal-header {
+#addCategoryModal .modal-dialog .modal-content .modal-header,
+#addToCartModal .modal-dialog .modal-content .modal-header {
     display: flex;
     justify-content: space-between;
 }
@@ -1152,7 +1154,8 @@ footer .my-account {
 #editProductModal .modal-dialog .modal-content .modal-footer,
 #addProductModal .modal-dialog .modal-content .modal-footer,
 #editCategoryModal .modal-dialog .modal-content .modal-footer,
-#addCategoryModal .modal-dialog .modal-content .modal-footer{
+#addCategoryModal .modal-dialog .modal-content .modal-footer,
+#addToCartModal .modal-dialog .modal-content .modal-footer{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;

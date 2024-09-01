@@ -73,38 +73,39 @@
             </tbody>
         </table>
 
-     <section id="cart-add" class="section-p1">
-        <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <div>
-                <input type="text" placeholder="Enter Your Coupon">
-                <button class="normal">Apply</button>
+        <section id="cart-add" class="section-p1">
+            <div id="coupon">
+                <h3>Apply Coupon</h3>
+                <div>
+                    <input type="text" placeholder="Enter Your Coupon">
+                    <button class="normal">Apply</button>
+                </div>
             </div>
-        </div>
-        <div id="subtotal">
-            <h3>Cart Total</h3>
-            <table>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td>$<%= totalCartPrice %></td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>$<%= totalCartPrice %></strong></td>
-                </tr>
-            </table>
-            <button id="checkout-button" class="normal">Order Cart !</button>
-        </div>
-     </section>
-     <% } else { %>
-        <section id="empty-cart" class="section-p1">
-            <h1>Cart Is Empty</h1>
+            <div id="subtotal">
+                <h3>Cart Total</h3>
+                <table>
+                    <tr>
+                        <td>Cart Subtotal</td>
+                        <td>$<%= totalCartPrice %></td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>$<%= totalCartPrice %></strong></td>
+                    </tr>
+                </table>
+                <button id="checkout-button" class="normal">Order Cart !</button>
+            </div>
         </section>
-     <% } %>
+        <% } else { %>
+            <section id="empty-cart" class="section-p1">
+                <h1>Cart Is Empty</h1>
+            </section>
+        <% } %>
+    </section>
 
     <!-- Footer -->
     <footer class="section-p1">
@@ -159,6 +160,7 @@
             <p>&copy; 2024 Stylish Threads Clothing Store. All Rights Reserved.</p>
         </div>
     </footer>
+
 
     <script src="./js/script.js"></script>
     <script src="./js/updateQuantity.js"></script>

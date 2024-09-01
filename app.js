@@ -53,6 +53,7 @@ app.use((req, res, next) => {
 });
 
 
+
 app.use('/', home);
 app.use('/shop', shop);
 app.use('/blog', blog);
@@ -64,7 +65,6 @@ app.use('/categories', category);
 app.use('/login', login);
 app.use('/', account);
 app.use('/', order);
-
 
 
 app.listen(process.env.PORT);

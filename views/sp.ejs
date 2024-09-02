@@ -236,8 +236,6 @@
         </div>
     </footer>
 
-
-    
     <!-- Add Modal -->
     <div class="modal fade" id="addToCartModal" tabindex="-1" role="dialog" aria-labelledby="addToCartModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -246,9 +244,13 @@
                     <h4 class="modal-title" id="addToCartModalLabel">Item Added To Cart</h4>
                     <button type="button" class="normal" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i></button>
                 </div>
+                <div class="modal-body">
+                    <p>Name : <%= product.name %></p>
+                    <p>Price : <%= product.price %></p>
+                  </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="continueShoppingButton">Continue</button>
-                    <button type="button" class="btn btn-secondary" id="goToCartButton">Go To Cart</button>
+                    <button type="button" class="btn btn-warning" id="goToCartButton">Shopping Cart</button>
                 </div>
             </div>
         </div>

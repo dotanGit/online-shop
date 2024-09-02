@@ -97,7 +97,7 @@
                         <td><strong>$<%= totalCartPrice %></strong></td>
                     </tr>
                 </table>
-                <button id="checkout-button" class="normal">Order Cart !</button>
+                <button id="checkout-button" class="normal">Proceed To Checkout</button>
             </div>
         </section>
         <% } else { %>
@@ -161,6 +161,24 @@
         </div>
     </footer>
 
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="checkoutModalLabel">Checkout Successful</h4>
+                </div>
+                <div class="modal-body">    
+                    Your order has been placed successfully.<br>
+                    Total Price : $<%= totalCartPrice %>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="continue-btn">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./js/script.js"></script>
     <script src="./js/updateQuantity.js"></script>

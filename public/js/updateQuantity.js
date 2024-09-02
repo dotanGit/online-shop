@@ -48,8 +48,8 @@ document.querySelectorAll('.remove-item').forEach(button => {
 });
 
 
-
 document.querySelector('#checkout-button').addEventListener('click', async () => {
+    const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
     try {
         const response = await fetch('/checkout', {
             method: 'POST',
@@ -60,11 +60,12 @@ document.querySelector('#checkout-button').addEventListener('click', async () =>
         });
 
         const result = await response.json();
-
         if (response.ok) {
-            alert('Order placed successfully!');
-            // Optionally redirect to a confirmation page or clear cart in frontend
-            window.location.href = '/'; // Replace with actual route
+            checkoutModal.show();
+
+            document.getElementById('continue-btn').addEventListener('click', () => {
+                window.location.href = '/'; // Replace with actual route
+            });
         } else {
             alert('Error: ' + result.message);
         }
@@ -73,3 +74,4 @@ document.querySelector('#checkout-button').addEventListener('click', async () =>
         alert('An error occurred during checkout.');
     }
 });
+

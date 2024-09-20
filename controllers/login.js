@@ -37,20 +37,42 @@ async function login(req, res) {
 
 
 async function register(req, res) {
-  const { username, password, email, phoneNumber, address } = req.body
+  const { username, password, email, phoneNumber, address } = req.body;
 
   try {
-    await loginService.register(username, password, email, phoneNumber, address)    
-    req.session.username = username
-    req.session.email = email
-    req.session.phoneNumber = phoneNumber
-    req.session.address = address
-    res.redirect('/')
+      await loginService.register(username, password, email, phoneNumber, address);
+
+      req.session.username = username;
+      req.session.email = email;
+      req.session.phoneNumber = phoneNumber;
+      req.session.address = address;
+      
+      res.redirect('/');
+  } catch (e) {
+      // Redirect back to registration page with an error message
+      res.redirect('/register?error=1&message=' + encodeURIComponent(e.message));
   }
-  catch (e) { 
-    res.redirect('/register?error=1')
-  }    
 }
+
+
+async function register(req, res) {
+  const { username, password, email, phoneNumber, address } = req.body;
+
+  try {
+      await loginService.register(username, password, email, phoneNumber, address);
+
+      req.session.username = username;
+      req.session.email = email;
+      req.session.phoneNumber = phoneNumber;
+      req.session.address = address;
+      res.redirect('/');
+  } catch (e) {
+      // Redirect back to registration page with an error message
+      // res.redirect('/login/register?error=' + encodeURIComponent(e.message));
+      res.redirect(`/login/register?error=${encodeURIComponent(e.message)}&password=${encodeURIComponent(password)}&email=${encodeURIComponent(email)}&phoneNumber=${encodeURIComponent(phoneNumber)}&address=${encodeURIComponent(address)}`);
+  }
+}
+
 
 function accountDetails(req, res) {
   console.log("Account details:", req.session); // Debug statement

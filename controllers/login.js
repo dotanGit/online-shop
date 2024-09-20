@@ -68,8 +68,7 @@ async function register(req, res) {
       res.redirect('/');
   } catch (e) {
       // Redirect back to registration page with an error message
-      // res.redirect('/login/register?error=' + encodeURIComponent(e.message));
-      res.redirect(`/login/register?error=${encodeURIComponent(e.message)}&password=${encodeURIComponent(password)}&email=${encodeURIComponent(email)}&phoneNumber=${encodeURIComponent(phoneNumber)}&address=${encodeURIComponent(address)}`);
+      res.redirect('/login/register?error=' + encodeURIComponent(e.message));
   }
 }
 

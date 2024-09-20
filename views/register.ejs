@@ -49,24 +49,25 @@
     </section>
 
     <section id="login-register-details">
-        <form id="login-form" action="/login/register" method="post">
-          <h4>Choose Username :</h4>
-          <input name="username" placeholder="username...">
-          <h4>Choose Password :</h4>
-          <input name="password" type="password" placeholder="password...">
-          <h4>Choose Email :</h4>
-          <input name="email" placeholder="email...">
-          <h4>Choose Phone Number :</h4>
-          <input name="phoneNumber" placeholder="phone...">
-          <h4>Choose Adress :</h4>
-          <input name="address" placeholder="adress...">
-          <div id="error-message" style="color: red; display: none;"></div> <!-- Error message container -->
-          <div class="button-container">
-            <button class="normal" type="submit">Sign UP</button>
-          </div>
-        </form>
-    </section>
+      <form id="login-form" action="/login/register" method="post">
+        <h4>Choose Username :</h4>
+        <input name="username" placeholder="username..." required>
+        <h4>Choose Password :</h4>
+        <input name="password" id="password" type="password" placeholder="password..." required>
+        <h4>Choose Email :</h4>
+        <input name="email" placeholder="email..." required>
+        <h4>Choose Phone Number :</h4>
+        <input name="phoneNumber" placeholder="phone..." required>
+        <h4>Choose Address :</h4>
+        <input name="address" placeholder="address..." required>
+        <div id="error-message" style="color: red; display: none;"></div> <!-- Error message container -->
+        <div class="button-container">
+          <button class="normal" type="submit">Sign UP</button>
+        </div>
+      </form>
+  </section>
 
+    <script src="/js/register.js"></script>
     <script src="/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

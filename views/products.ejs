@@ -15,29 +15,28 @@
         <a href="#"><img src ="img/logo.png" class="logo" alt=""></a>
         <div id="navbar-container">
             <ul id="navbar">
-                <li><a href="/">Home</a></li>
-                <li><a href="/shop">Shop</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a class="active" href="/products">Products Management</a></li>
-                <li><a href="/categories">Categories Management</a></li>
-                <li id="lg-bag"><a href="/cart"><i class="bi bi-bag"></i></a></li>
-                <% if (typeof username !== 'undefined') { %>
+              <li><a href="/">Home</a></li>
+              <li><a href="/shop">Shop</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a class="active" href="/products">Products Management</a></li>
+              <li><a href="/categories">Categories Management</a></li>
+              <li id="lg-bag"><a href="/cart"><i class="bi bi-bag"></i></a></li>
+              <% if (typeof username !== 'undefined') { %>
                 <li id="lg-bag"><a href="/account"><i class="bi bi-person-circle"></i></a></li>
                 <li id="lg-bag"><a href="/logout">Logout</a></li>
-                <% } else { %>
+              <% } else { %>
                 <li id="lg-bag"><a href="/login"><i class="bi bi-person-circle"></i></a></li>
-                <% } %>
-                <i id="close" class="bi bi-x-lg"></i>
+              <% } %>
+              <i id="close" class="bi bi-x-lg"></i>
             </ul>
-            </div>
-    
+          </div>
+
         <div id="mobile">
             <a href="/cart"><i class="bi bi-bag"></i></a>
             <i id="bar" class="bi bi-list"></i>
         </div>
-    
+
     </section>
 
     <!-- Products Funcuality -->

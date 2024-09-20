@@ -19,8 +19,10 @@
               <li><a href="/shop">Shop</a></li>
               <li><a href="/about">About</a></li>
               <li><a class="active" href="/contact">Contact</a></li>
-              <li><a href="/products">Products Management</a></li>
-              <li><a href="/categories">Categories Management</a></li>
+              <% if (username === "admin") { %>
+                <li><a href="/products">Products Management</a></li>
+                <li><a href="/categories">Categories Management</a></li>
+              <% } %>
               <li id="lg-bag"><a href="/cart"><i class="bi bi-bag"></i></a></li>
               <% if (typeof username !== 'undefined') { %>
                 <li id="lg-bag"><a href="/account"><i class="bi bi-person-circle"></i></a></li>

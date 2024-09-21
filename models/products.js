@@ -22,6 +22,11 @@ const Product = new Schema ({
     image: {  // Store the image file name
         type: String,
         required: true
+    },
+    gender: {
+        type: String,
+        enum: ['male', 'female'],
+        required: true
     }
 });
 

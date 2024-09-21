@@ -46,27 +46,36 @@
         <h2>#stayhome</h2>
         <p>Save more with coupons & up to 70% off!</p>
     </section>
-  
 
-    <section id="funcuality" class="section-p1">
-        <div class="options">
-            <form action="/shop" method="get">
-                <h4>Filter Catgeory : </h4>
-                <select name="category" id="select-category">
+    <!-- Search Form -->
+    <section id="search-form">
+        <form method="GET" action="/shop">
+            <div>
+                <label for="category">Category:</label>
+                <select name="category" id="category">
                     <option value="">All Categories</option>
                     <% categories.forEach(category => { %>
-                        <option value="<%= category._id %>"><%= category.name %></option>
-                    <% }) %>
+                        <option value="<%= category._id %>" <%= selectedCategoryName === category.name ? 'selected' : '' %>><%= category.name %></option>
+                    <% }); %>
                 </select>
-                <button id="filter-btn" class="normal">Filter</button>
-            </form>
-        </div>
-    </section>
+            </div>
 
-    <section id="category-header"> 
-        <% if (selectedCategoryName !== 'All Categories') { %>
-            <h2>Category : <span><%= selectedCategoryName %></span></h2>
-        <% } %>
+            <div>
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="">All</option>
+                    <option value="male" <%= selectedGender === 'male' ? 'selected' : '' %>>Male</option>
+                    <option value="female" <%= selectedGender === 'female' ? 'selected' : '' %>>Female</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="price">Maximum Price:</label>
+                <input type="number" name="maxPrice" id="maxPrice" value="<%= selectedMaxPrice || '' %>" placeholder="Enter max price">
+            </div>
+
+            <button type="submit">Search</button>
+        </form>
     </section>
 
     <!-- Products -->

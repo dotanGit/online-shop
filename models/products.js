@@ -18,6 +18,10 @@ const Product = new Schema ({
     description: {
         type : String,
         required : true
+    },
+    image: {  // Store the image file name
+        type: String,
+        required: true
     }
 });
 

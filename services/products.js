@@ -1,12 +1,13 @@
 const Product = require('../models/products');
 const Category = require('../models/category');
 
-const addProduct = async (name,price,category,description) => {
+const addProduct = async (name,price,category,description, image) => {
     const product = new Product({
         name : name,
         price : price,
         category : category,
-        description : description
+        description : description,
+        image : image
     });
 
     const savedProduct = await product.save();
@@ -34,8 +35,8 @@ const getProductById = async (id) => {
     return await Product.findById(id).populate('category');
 };
 
-const updateProduct = async (id,name,price,category,description) => {
-    return await Product.findByIdAndUpdate(id,{name,price,category,description},{new:true}).populate('category');
+const updateProduct = async (id,name,price,category,description,image) => {
+    return await Product.findByIdAndUpdate(id,{name,price,category,description,image},{new:true}).populate('category');
 };
 
 const getProductsByCategory = async (category) => {

@@ -55,7 +55,7 @@
                 <% products.forEach(product => { %>
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="pro" onclick="window.location.href='/products/product/<%= product._id %>';">
-                        <img src="img/products/f1.jpg" alt="">
+                        <img src="img/products/<%= product.image %>" alt="">
                         <div class="des">
                             <span><%= product.category.name %></span>
                             <h5><%= product.name %></h5>

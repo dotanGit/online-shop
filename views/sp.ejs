@@ -12,7 +12,7 @@
 
     <!-- Header / Navbar -->
     <section id="header" class="container-fluid">
-        <a href="#"><img src ="img/logo.png" class="logo" alt=""></a>
+        <a href="#"><img src ="/img/logo.png" class="logo" alt=""></a>
         <div id="navbar-container">
             <ul id="navbar">
               <li><a href="/">Home</a></li>
@@ -44,21 +44,13 @@
     <!-- Product Details -->
     <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
-            <img src="/img/products/f1.jpg" width="100%" id="mainImg" alt="">
-    
+            <img src="/img/products/<%= product.image %>" width="100%" id="mainImg" alt="">
             <div class="small-img-group">
-                <div class="small-img-col">
-                    <img src="/img/products/f1.jpg" width="100%" class="small-img" alt="">
-                </div>
-                <div class="small-img-col">
-                    <img src="/img/products/f2.jpg" width="100%" class="small-img" alt="">
-                </div>
-                <div class="small-img-col">
-                    <img src="/img/products/f3.jpg" width="100%" class="small-img" alt="">
-                </div>
-                <div class="small-img-col">
-                    <img src="/img/products/f4.jpg" width="100%" class="small-img" alt="">
-                </div>
+                <% for (let i = 2; i <= 5; i++) { %>
+                        <div class="small-img-col">
+                            <img src="/img/products/<%= product.image.slice(0, 2) + i %>.jpg" width="100%" class="small-img" alt="">
+                        </div>
+                <% } %>
             </div>
         </div>
     

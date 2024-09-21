@@ -35,8 +35,38 @@ const getProductById = async (id) => {
     return await Product.findById(id).populate('category');
 };
 
-const updateProduct = async (id,name,price,category,description,image) => {
-    return await Product.findByIdAndUpdate(id,{name,price,category,description,image},{new:true}).populate('category');
+// const updateProduct = async (id,name,price,category,description,image) => {
+//     return await Product.findByIdAndUpdate(id,{name,price,category,description,image},{new:true}).populate('category');
+// };
+
+
+const updateProduct = async (id, name, price, category, description, image) => {
+    // Find the current product before updating to get the current category
+    const existingProduct = await Product.findById(id);
+
+    if (!existingProduct) {
+        throw new Error('Product not found');
+    }
+
+    // Check if the category has changed
+    const currentCategory = existingProduct.category.toString(); // Convert to string for comparison
+
+    if (currentCategory !== category.toString()) {
+        // Decrease the count of the old category
+        await Category.findByIdAndUpdate(currentCategory, { $inc: { productCount: -1 } });
+
+        // Increase the count of the new category
+        await Category.findByIdAndUpdate(category, { $inc: { productCount: 1 } });
+    }
+
+    // Now update the product with the new data
+    const updatedProduct = await Product.findByIdAndUpdate(
+        id,
+        { name, price, category, description, image },
+        { new: true }
+    ).populate('category');
+
+    return updatedProduct;
 };
 
 const getProductsByCategory = async (category) => {

@@ -48,6 +48,27 @@
     </section>
   
 
+    <section id="funcuality" class="section-p1">
+        <div class="options">
+            <form action="/shop" method="get">
+                <h4>Filter Catgeory : </h4>
+                <select name="category" id="select-category">
+                    <option value="">All Categories</option>
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category._id %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
+                <button id="filter-btn" class="normal">Filter</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="category-header"> 
+        <% if (selectedCategoryName !== 'All Categories') { %>
+            <h2>Category : <span><%= selectedCategoryName %></span></h2>
+        <% } %>
+    </section>
+
     <!-- Products -->
     <section id="product1" class="section-p1">
         <div class="container-fluid">
@@ -76,302 +97,6 @@
         </div>
     </section>
 
-
-    <!-- Products -->
-    <!-- <section id="product1" class="section-p1">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro" onclick="window.location.href='sproduct.html';">
-                        <img src="img/products/f1.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro">
-                        <img src="img/products/f2.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro">
-                        <img src="img/products/f3.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro">
-                        <img src="img/products/f4.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro">
-                        <img src="img/products/f5.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro">
-                        <img src="img/products/f6.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro">
-                        <img src="img/products/f7.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="pro">
-                        <img src="img/products/f8.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n1.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n2.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n3.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n4.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n5.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n6.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n7.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="pro">
-                        <img src="img/products/n8.jpg" alt="">
-                        <div class="des">
-                            <span>Billabong</span>
-                            <h5>Hawain T-Shirt</h5>
-                            <div class="star">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <h4>$78</h4>
-                        </div>
-                        <a href="#"><i class="bi bi-cart"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Pagination -->
      <section id="pagination" class="section-p1">

@@ -28,6 +28,9 @@ async function createOrder(userName) {
         // Push to order items
         orderItems.push({
             productId: cartItem.productId,
+            image: product.image,
+            name: product.name,
+            gender: product.gender,
             quantity: quantity,
             price: price
         });

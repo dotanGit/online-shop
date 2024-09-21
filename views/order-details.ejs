@@ -49,17 +49,23 @@
         <table>
             <thead>
                 <tr> 
-                    <td>Product ID</td>
+                    <td>Image</td>
+                    <td>Name</td>
+                    <td>Gender</td>
                     <td>Quantity</td>
-                    <td>Price</td>
+                    <td>Price Per Unit</td>
+                    <td>Total</td>
                 </tr>
             </thead>
             <tbody>
                 <% order.items.forEach(function(item) { %>
                 <tr>
-                    <td><%= item.productId %></td>
+                    <td><img src="/img/products/<%= item.image %>" alt="<%= item.name %>"></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.gender %></td>
                     <td><%= item.quantity %></td>
                     <td>$<%= item.price %></td>
+                    <td>$<%= item.price * item.quantity %></td>
                 </tr>
                 <% }) %>
             </tbody>

@@ -9,6 +9,9 @@ const Order = new Schema({
     },
     items: [{
         productId: String,
+        image: String,
+        name: String,
+        gender: String,
         quantity: String,
         price: String
     }],

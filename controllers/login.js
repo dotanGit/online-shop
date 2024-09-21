@@ -1,4 +1,5 @@
 const loginService = require("../services/login")
+const orderService = require("../services/order")
 
 
 function isLoggedIn(req, res, next) {
@@ -8,7 +9,6 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login');
   }
 }
-
 
 function loginForm(req, res) { res.render("login", {}) }
 
@@ -73,10 +73,27 @@ async function register(req, res) {
 }
 
 
-function accountDetails(req, res) {
-  console.log("Account details:", req.session); // Debug statement
-  res.render("account", { username: req.session.username, email: req.session.email, phoneNumber: req.session.phoneNumber, address: req.session.address });
+async function accountDetails(req, res) {
+  const userId = req.session.username;
+
+  try {
+      // Fetch the order history using the service
+      const orders = await orderService.getOrderHistoryByUserId(userId);
+
+      // Render the account page with user info and orders
+      res.render('account', {
+          username: req.session.username,
+          email: req.session.email,
+          phoneNumber: req.session.phoneNumber,
+          address: req.session.address,
+          orders: orders  // Pass the orders to the view
+      });
+  } catch (e) {
+      console.error('Error fetching account details:', e);
+      res.redirect('/login/register?error=' + encodeURIComponent(e.message));
+  }
 }
+
 
 module.exports = {
   login,

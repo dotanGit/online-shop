@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="order-details" class="section-p1">
+        <h2>Order Details for Order ID: <%= order._id %></h2>
+        <p>Date: <%= order.orderDate.toDateString() %></p>
+        <p>Total: $<%= order.total %></p>
+    
+        <h4>Items:</h4>
+        <ul>
+            <% order.items.forEach(function(item) { %>
+            <li>
+                <strong>Product ID:</strong> <%= item.productId %>, 
+                <strong>Quantity:</strong> <%= item.quantity %>, 
+                <strong>Price:</strong> $<%= item.price %>
+            </li>
+            <% }) %>
+        </ul>
+    
+        <a href="/account">Back to Orders</a> <!-- Link back to order history -->
+    </section>
+</body>
+</html>

@@ -49,6 +49,28 @@ async function createOrder(userName) {
     return order;
 }
 
+async function getOrderHistoryByUserId(userId) {
+    try {
+        const orders = await Order.find({ userId: userId }).sort({ orderDate: -1 });
+        return orders;  // Return the fetched orders
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        throw new Error('Error fetching orders');
+    }
+}
+
+async function getOrderById(orderId) {
+    try {
+        const order = await Order.findById(orderId);
+        return order;
+    } catch (error) {
+        console.error('Error fetching order:', error);
+        throw new Error('Error fetching order');
+    }
+}
+
 module.exports = {
-    createOrder
+    createOrder,
+    getOrderHistoryByUserId,
+    getOrderById
 };

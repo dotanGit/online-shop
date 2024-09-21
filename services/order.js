@@ -72,8 +72,20 @@ async function getOrderById(orderId) {
     }
 }
 
+async function getAllOrders() {
+    try {
+        // Find all orders and sort by order date in descending order
+        const orders = await Order.find().sort({ orderDate: -1 });
+        return orders;
+    } catch (error) {
+        console.error('Error fetching all orders:', error);
+        throw new Error('Error fetching all orders');
+    }
+}
+
 module.exports = {
     createOrder,
     getOrderHistoryByUserId,
-    getOrderById
+    getOrderById,
+    getAllOrders
 };

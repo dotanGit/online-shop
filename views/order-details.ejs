@@ -22,6 +22,7 @@
               <% if (username === "admin") { %>
                 <li><a href="/products">Products Management</a></li>
                 <li><a href="/categories">Categories Management</a></li>
+                <li><a href="/admin/orders">Order Stats</a></li>
               <% } %>
               <li id="lg-bag"><a href="/cart"><i class="bi bi-bag"></i></a></li>
               <% if (typeof username !== 'undefined') { %>
@@ -45,7 +46,7 @@
         <h4>Order Details for Order ID: <span><%= order._id %></span></h2>
         <h4>Date: <span><%= order.orderDate.toDateString() %></span></h4>
         <h4>Total: <span>$<%= order.total %></span></h4>
-        <button id="back-to-orders" class="normal" onclick="window.location.href='/account'">Back to Orders</button>
+        <button id="back-to-orders" class="normal" onclick="goBack()">Back to Orders</button>
         <table>
             <thead>
                 <tr> 

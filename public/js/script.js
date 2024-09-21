@@ -16,7 +16,9 @@ if (close) {
     });
 }
 
-
+function goBack() {
+    window.history.back();  // This will take the user to the previous page
+}
 
 
 

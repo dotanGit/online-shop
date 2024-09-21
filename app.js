@@ -7,7 +7,6 @@ const session = require('express-session');
 
 const home = require('./routes/home');
 const shop = require('./routes/shop');
-const blog = require('./routes/blog');
 const about = require('./routes/about');
 const contact = require('./routes/contact');
 const cart = require('./routes/cart');
@@ -56,7 +55,6 @@ app.use((req, res, next) => {
 
 app.use('/', home);
 app.use('/shop', shop);
-app.use('/blog', blog);
 app.use('/about', about);
 app.use('/contact', contact);
 app.use('/cart', cart);

@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const productCategory = buttonElement.getAttribute('data-product-category');
             const productDesc = buttonElement.getAttribute('data-product-description');
             const productImage = buttonElement.getAttribute('data-product-image');
+            const productGender = buttonElement.getAttribute('data-product-gender');
 
             document.getElementById('editProductModalLabel').innerText = "Edit Product: " + productName;
             document.getElementById('editProductName').value = productName;
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('editProductCategory').value = productCategory;
             document.getElementById('editProductDesc').value = productDesc;
             document.getElementById('editProductImage').value = productImage;
+            document.getElementById('editProductGender').value = productGender;
 
 
             editProductModal.show();
@@ -37,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             price: document.getElementById('editProductPrice').value,
             category: document.getElementById('editProductCategory').value,
             description: document.getElementById('editProductDesc').value,
-            image: document.getElementById('editProductImage').value
+            image: document.getElementById('editProductImage').value,
+            gender: document.getElementById('editProductGender').value,
         };
 
         try {
@@ -97,7 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
             price: document.getElementById('addProductPrice').value,
             category: document.getElementById('addProductCategory').value,
             description: document.getElementById('addProductDesc').value,
-            image: document.getElementById('addProductImage').value
+            image: document.getElementById('addProductImage').value,
+            gender: document.getElementById('addProductGender').value
         };
         
 

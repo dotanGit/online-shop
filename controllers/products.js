@@ -3,7 +3,12 @@ const categoryService = require('../services/category');
 const { render } = require('ejs');
 
 const addProduct = async (req,res) => {
-    await productService.addProduct(req.body.name,req.body.price,req.body.category,req.body.description,req.body.image);
+    await productService.addProduct(req.body.name,
+                                    req.body.price,
+                                    req.body.category,
+                                    req.body.description,
+                                    req.body.image,
+                                    req.body.gender);
     res.redirect('/products');
 };
 
@@ -38,9 +43,9 @@ const deleteProduct = async (req,res) => {
 const updateProduct = async (req, res) => {
     try {
         const id = req.params.id;
-        const { name, price, category, description, image } = req.body;
+        const { name, price, category, description, image, gender } = req.body;
         console.log(description)
-        await productService.updateProduct(id, name, price, category, description, image);
+        await productService.updateProduct(id, name, price, category, description, image, gender);
         res.status(200).json({ message: 'Product updated successfully' });
     } catch (error) {
         console.log('Error:', error);

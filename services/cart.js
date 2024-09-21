@@ -5,6 +5,15 @@ async function getCart(userId) {
   const user = await User.findById(userId);
   const cartItems = await Promise.all(user.cart.map(async item => {
     const product = await Product.findById(item.productId);
+
+
+    // Check if the product exists
+    if (!product) {
+      console.error(`Product with ID ${item.productId} not found`);
+      return null; // You can decide what to do here (e.g., return null or skip the item)
+    }
+
+
     const productPrice = parseFloat(product.price); // Convert price to a number
     return {
       productId: item.productId,

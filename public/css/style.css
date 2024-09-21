@@ -620,15 +620,37 @@ footer .my-account {
     font-weight: 600;
 }
 
-#funcuality form {
+#search-form {
     display: flex;
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 40px;
 }
 
-#funcuality .options button {
+#search-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Takes the full width available */
+    max-width: 400px; /* Optional: Limits the form width */
+    padding: 20px;
+    background-color: #edecec; /* Optional: Add a background for better visibility */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow for better look */
+}
+
+#search-form form div {
+    margin-bottom: 15px;
+}
+
+#search-form h4 {
+    text-align: center; /* Center the text */
+    font-size: 24px; /* Optional: Adjust the size for better visibility */
+    color: #088178;
+}
+
+#search-form form button{
     background-color: #088178;
     color: white;
-    height: 45px;
 }
 
 

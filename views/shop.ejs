@@ -45,11 +45,15 @@
     <section id="page-header">
         <h2>#stayhome</h2>
         <p>Save more with coupons & up to 70% off!</p>
-    </section>
+    </section>  
 
     <!-- Search Form -->
     <section id="search-form">
         <form method="GET" action="/shop">
+            <div>
+                <h4>Advanced Search</h4>
+            </div>
+
             <div>
                 <label for="category">Category:</label>
                 <select name="category" id="category">
@@ -74,7 +78,7 @@
                 <input type="number" name="maxPrice" id="maxPrice" value="<%= selectedMaxPrice || '' %>" placeholder="Enter max price">
             </div>
 
-            <button type="submit">Search</button>
+            <button class="normal" type="submit">Search</button>
         </form>
     </section>
 

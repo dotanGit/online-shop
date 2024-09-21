@@ -35,11 +35,6 @@ const getProductById = async (id) => {
     return await Product.findById(id).populate('category');
 };
 
-// const updateProduct = async (id,name,price,category,description,image) => {
-//     return await Product.findByIdAndUpdate(id,{name,price,category,description,image},{new:true}).populate('category');
-// };
-
-
 const updateProduct = async (id, name, price, category, description, image) => {
     // Find the current product before updating to get the current category
     const existingProduct = await Product.findById(id);
@@ -52,8 +47,11 @@ const updateProduct = async (id, name, price, category, description, image) => {
     const currentCategory = existingProduct.category.toString(); // Convert to string for comparison
 
     if (currentCategory !== category.toString()) {
-        // Decrease the count of the old category
-        await Category.findByIdAndUpdate(currentCategory, { $inc: { productCount: -1 } });
+        // Decrease the count of the old category only if it's greater than 0
+        const oldCategory = await Category.findById(currentCategory);
+        if (oldCategory.productCount > 0) {
+            await Category.findByIdAndUpdate(currentCategory, { $inc: { productCount: -1 } });
+        }
 
         // Increase the count of the new category
         await Category.findByIdAndUpdate(category, { $inc: { productCount: 1 } });

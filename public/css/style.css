@@ -1254,6 +1254,20 @@ footer .my-account {
 }
 
 
+#chartContainer {
+    width: 60%;            /* Adjust this percentage to control the size */
+    max-width: 600px;       /* Set a maximum width for the chart */
+    margin: 0 auto;         /* Center the chart horizontally */
+}
+
+#all-orders-title {
+    font-size: 36px;       /* Make the font smaller, adjust the size as needed */
+    text-align: center; 
+    margin-top: 70px;   /* Center the text horizontally */
+    margin-bottom: 20px;   /* Add space below the title */
+    color: #333;           /* Optional: Change the text color if needed */
+}
+
 
 /*-------------------------------------------------------------------------------------------------------------------
                                                     @media

@@ -44,16 +44,27 @@ async function getAllOrders(req, res) {
         let totalRevenue = 0;
         let totalItemsSold = 0;
         const productSales = {}; // To track product sales by quantity
+        const monthlyRevenue = {};
+
+        // Helper to format dates as YYYY-MM
+        const formatDateToMonthYear = (date) => {
+            const formatter = new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: '2-digit'
+            });
+            const [{ value: month }, , { value: year }] = formatter.formatToParts(date);
+            return `${year}-${month}`;
+        };
 
         // Loop through each order
         orders.forEach(order => {
             totalRevenue += parseFloat(order.total);
-            
+
             // Sum up the quantity of each item in the order
             order.items.forEach(item => {
                 totalItemsSold += parseInt(item.quantity);
 
-                // Track product sales
+                // Track product sales for most popular product
                 if (!productSales[item.productId]) {
                     productSales[item.productId] = {
                         name: item.name,
@@ -62,6 +73,14 @@ async function getAllOrders(req, res) {
                 }
                 productSales[item.productId].quantity += parseInt(item.quantity);
             });
+
+            // Properly format the order date to "YYYY-MM"
+            const orderMonth = formatDateToMonthYear(new Date(order.orderDate));
+            
+            if (!monthlyRevenue[orderMonth]) {
+                monthlyRevenue[orderMonth] = 0;
+            }
+            monthlyRevenue[orderMonth] += parseFloat(order.total);
         });
 
         // Determine the most popular product by quantity sold
@@ -75,12 +94,18 @@ async function getAllOrders(req, res) {
             }
         }
 
-        // Render the page with orders, total revenue, total items sold, and the most popular product
+        // Convert the monthlyRevenue object into arrays of labels and data
+        const monthlyLabels = Object.keys(monthlyRevenue);
+        const monthlyData = Object.values(monthlyRevenue);
+
+        // Render the page with the calculated data
         res.render('order', { 
             orders: orders, 
             totalRevenue: totalRevenue.toFixed(2), 
             totalItemsSold: totalItemsSold, 
-            mostPopularProduct: mostPopularProduct || 'No products sold yet' // Fallback if no orders
+            mostPopularProduct: mostPopularProduct || 'No products sold yet',  // Pass most popular product
+            monthlyLabels: JSON.stringify(monthlyLabels),  // Pass as JSON string to safely use in JS
+            monthlyData: JSON.stringify(monthlyData)
         });
     } catch (error) {
         console.error('Error fetching all orders:', error);

@@ -41,68 +41,107 @@
 
   </section>
 
-
-  <h1>My Account</h1>
-  <p>Welcome, <%= username %>!</p>
-  <p>Email: <%= email %></p>
-  <p>Phone: <%= phoneNumber %></p>
-  <p>Address: <%= address %></p>
-
-
-  <h2>Your Order History</h2>
-  <% if (orders && orders.length > 0) { %>
-      <ul>
-          <% orders.forEach(function(order) { %>
-              <li>
-                  <strong>Order ID:</strong> <%= order._id %> <br>
-                  <strong>Date:</strong> <%= order.orderDate.toDateString() %> <br>
-                  <strong>Total:</strong> $<%= order.total %> <br>
-
-                  <h4>Items:</h4>
-                  <ul>
-                      <% order.items.forEach(function(item) { %>
-                          <li>
-                              <strong>Product ID:</strong> <%= item.productId %>, 
-                              <strong>Quantity:</strong> <%= item.quantity %>, 
-                              <strong>Price:</strong> $<%= item.price %>
-                          </li>
-                      <% }) %>
-                  </ul>
-              </li>
-          <% }) %>
-      </ul>
-  <% } else { %>
-      <p>No orders found.</p>
-  <% } %>
-
+  <!-- Main -->
+  <section id="page-header" class="about-header">
+    <h2>Welcome, <%= username %>!</h2>
+    <p>
+      Email: <span class="info-item"><%= email %></span>
+      Phone: <span class="info-item"><%= phoneNumber %></span>
+      Address: <span class="info-item"><%= address %></span>
+    </p>
+  </section>
 
   <section id="cart" class="section-p1">
     <% if (orders && orders.length > 0) { %>
-    <table>
-        <thead>  <!-- tr = table row  | tb = table data | thead = header row -->
-            <tr> 
-                <td>Order ID</td>
-                <td>Date</td>
-                <td>Total</td>
-            </tr>
-        </thead>
-        <tbody>
-          <% orders.forEach(function(order) { %>
-            <tr>
-                <td><a href="/order-details/<%= order._id %>"><%= order._id %></a></td>
-                <td><%= order.orderDate.toDateString() %></td>
-                <td>$<%= order.total %></td>
-            </tr>
-          <% }) %>
-        </tbody>
-    </table>
+        <h2>Your Order History</h2>
+        <table>
+            <thead>  <!-- tr = table row  | tb = table data | thead = header row -->
+                <tr> 
+                    <td>Order ID</td>
+                    <td>Date</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+              <% orders.forEach(function(order) { %>
+                <tr>
+                    <td><a href="/order-details/<%= order._id %>"><%= order._id %></a></td>
+                    <td><%= order.orderDate.toDateString() %></td>
+                    <td>$<%= order.total %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+        </table>
     <% } else { %>
-      <p>No orders found.</p>
+      <h2>No Orders Were Made</h2>
     <% } %>
-</section>
+  </section>
 
+  <!-- Newsletter Sign Up -->
+  <section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+        <h4>Sign Up For Newsletters</h4>
+        <p>Get E-mail updates about our latest shop and <span>spaciel offers.</span></p>
+    </div>
+    <div class="form">
+        <input  type="text" placeholder="Your Email Adress">
+        <button class="normal">Sign Up</button>
+    </div>
+  </section>
 
-  <p><a href="/logout">Logout</a></p>
+  <!-- Footer -->
+  <footer class="section-p1">
+    <div class="col contact">
+        <img class="logo" src="img/logo.png" alt="">
+        <h4>Contact</h4>
+        <p><strong>Adress:</strong> 1234 Elm Street, Springfield, USA</p>
+        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+        <p><strong>Hours:</strong> Monday - Friday, 8:00 AM - 6:00 PM</p>
+        <div class="follow">
+            <h4>Follow Us</h4>
+            <div class="icon">
+                <i class="bi bi-facebook"></i>
+                <i class="bi bi-twitter"></i>
+                <i class="bi bi-instagram"></i>
+                <i class="bi bi-pinterest"></i>
+                <i class="bi bi-youtube"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col about">
+        <h4>About</h4>
+        <a href="/about">About Us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="/contact">Contact Us</a>
+    </div>
+
+    <div class="col my-account">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+    </div>
+
+    <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+            <img src="img/pay/play.jpg" alt="">
+            <img src="img/pay/app.jpg" alt="">
+        </div>
+        <p>Secured Payment Getways</p>
+        <img src="img/pay/pay.png" alt="">
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2024 Stylish Threads Clothing Store. All Rights Reserved.</p>
+    </div>
+  </footer>
 
   <script src="./js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

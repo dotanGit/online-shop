@@ -20,7 +20,6 @@ async function getOrderHistory(req, res) {
         res.render('account', { orders: orders });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Unable to retrieve order history' });
     }
 }
 
